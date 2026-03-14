@@ -4,4 +4,5 @@ views_bp = Blueprint("views", __name__)
 
 @views_bp.route("/")
 def home():
-    return render_template("catalogo.html")
+    filtros = ['Nenhum']
+    return render_template("catalogo.html", filtros=filtros)

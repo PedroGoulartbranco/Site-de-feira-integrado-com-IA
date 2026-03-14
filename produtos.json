@@ -1,1 +1,27 @@
-//Daria para usar o upload mandando direto para nuvem da iA, mas eu só tenho a versão gratuita do Gemini (gasta tokens pegar da nuvem)
+[
+    {
+    "name": "CAMA CASAL MONTESSORIANA LISA", 
+    "price": "5.344,00",
+    "filter": ["cama", "cama casal"]
+    },
+     {
+    "name": "SOFÁ DE BRINCAR PLICO", 
+    "price": " 3.238,00",
+    "filter": ["sofa"]
+    },
+     {
+    "name": "POLTRONA TULA INFANTIL", 
+    "price": "1.862,00",
+    "filter": ["poltrona"]
+    },
+    {
+    "name": "TRAVESSEIRO INFANTIL", 
+    "price": "740,10",
+    "filter": ["traveseiro"]
+    },
+    {
+    "name": "COLCHÃO LÁTEX INFANTIL", 
+    "price": "5.815,34",
+    "filter": ["colchao"]
+    }
+]

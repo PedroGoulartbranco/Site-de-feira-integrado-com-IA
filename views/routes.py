@@ -14,5 +14,4 @@ def home():
 def pesquisar():
     pesquisa = request.json["pesquisa"]
     print(pesquisa)
- 
     return jsonify({"pesquisa": pesquisa})

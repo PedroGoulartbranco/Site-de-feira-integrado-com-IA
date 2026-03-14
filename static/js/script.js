@@ -23,7 +23,7 @@ botao_pesquisar.addEventListener("click", function(event){
     .then(response => response.json())
 
     .then(data => {
-        alert(data)
+        
     })
 
     .catch(error => console.log(error));

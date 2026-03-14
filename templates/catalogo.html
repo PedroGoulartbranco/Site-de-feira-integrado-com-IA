@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cátalogo</title>
+    <link rel="shortcut icon" href="../static/img/icon.png" type="image/x-icon">
 </head>
 <body>
     <h1>Cátalogo</h1>
     <p>Filtro: {% for filtro in filtros %} {{filtro}} {% endfor %}</p>
+    <div>
+        {% for produto in produtos %}
+        {{produto}}
+        {% endfor %}
+    </div>
 </body>
 </html>

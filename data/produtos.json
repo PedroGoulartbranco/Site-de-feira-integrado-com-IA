@@ -2,26 +2,31 @@
     {
     "name": "CAMA CASAL MONTESSORIANA LISA", 
     "price": "5.344,00",
-    "filter": ["cama", "cama casal"]
+    "filter": ["cama", "cama casal"],
+    "img": "CAMA CASAL MONTESSORIANA LISA.png"
     },
      {
     "name": "SOFÁ DE BRINCAR PLICO", 
     "price": " 3.238,00",
-    "filter": ["sofa"]
+    "filter": ["sofa"],
+    "img": "SOFÁ DE BRINCAR PLICO.png"
     },
      {
     "name": "POLTRONA TULA INFANTIL", 
     "price": "1.862,00",
-    "filter": ["poltrona"]
+    "filter": ["poltrona"],
+    "img": "POLTRONA TULA INFANTIL.png"
     },
     {
     "name": "TRAVESSEIRO INFANTIL", 
     "price": "740,10",
-    "filter": ["traveseiro"]
+    "filter": ["traveseiro"],
+    "img": "TRAVESSEIRO INFANTIL.png"
     },
     {
     "name": "COLCHÃO LÁTEX INFANTIL", 
     "price": "5.815,34",
-    "filter": ["colchao"]
+    "filter": ["colchao"],
+    "img": "COLCHÃO LÁTEX INFANTIL.png"
     }
 ]

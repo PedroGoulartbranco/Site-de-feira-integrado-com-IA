@@ -7,6 +7,8 @@ load_dotenv()
 
 chave_api = os.getenv("CHAVE_API")
 
+
+
 filtros = [
     # Categorias Principais
     'poltrona', 'piscina', 'sofa', 'cama', 'cama casal', 'cama solteiro', 
@@ -41,6 +43,20 @@ REGRAS DE OURO:
 - Busca por "limpeza", "xixi" ou "sujeira" -> retornar: lavavel, impermeavel.
 - SEMPRE responda apenas os termos da lista, sem textos extras.
 - Se houver dúvida, retorne os filtros mais abrangentes.
+- NUNCA mande a resposta vazia se for mandar vazia escreva ['Nenhum']
+
+### MAPA DE TRADUÇÃO:
+- "Criativo", "Animado", "Divertido", "Bagunça", "Cabana" -> Retornar: sofa, brinquedo, ludico, infantil
+- "Chique", "Elegante", "Moderno", "Design" -> Retornar: premium, poltrona, cama
+- "Saúde", "Limpo", "Alergia", "Espirro" -> Retornar: travesseiro, colchao, antialergico
+- "Autonomia", "Livre", "Baixinho" -> Retornar: cama, montessoriano
+
+### Regra Busca Abstrata
+-Se o usuário digitar algo muito vago, aleatório ou que não tenha um filtro direto (ex: "quero algo legal", "me surpreenda", "aleatório"), NÃO responda "nenhum".
+
+-Em vez disso, retorne os nossos produtos coringa: (sofa, brinquedo) ou (cama, montessoriano, seguranca) ou (poltrona, conforto) ou filtro unico.
+
+-A ideia é sempre tentar mostrar algo, a menos que ele peça algo ofensivo ou totalmente fora do nicho de móveis (como "pizza" ou "carro").
 
 EXEMPLO: 
 Produto: CAMA CASAL MONTESSORIANA LISA
@@ -51,16 +67,18 @@ Isso é para voce ter um exemplo
 genai.configure(api_key=chave_api)
 
 model = genai.GenerativeModel(
-    model_name='gemini-2.5-flash',
+    #gemini-2.5-flash
+    model_name='gemini-3-flash-preview',
     system_instruction=configuracao_ia,
     generation_config={
-          "temperature": 0.2
+          "temperature": 0.5
     }
 )
 
-response = model.generate_content("Quero algo animado")
 
-print(response.text)
+response = model.generate_content("Aleatorio")
+
+print(response.text, response.usage_metadata.total_token_count)
 
 def tranformar_pesquisa_em_filtro(pesquisa):
     pass

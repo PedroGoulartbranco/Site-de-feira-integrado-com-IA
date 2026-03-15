@@ -71,12 +71,12 @@ model = genai.GenerativeModel(
     model_name='gemini-3-flash-preview',
     system_instruction=configuracao_ia,
     generation_config={
-          "temperature": 0.5
+          "temperature": 0.3
     }
 )
 
 
-response = model.generate_content("Aleatorio")
+response = model.generate_content("Infantil")
 
 print(response.text, response.usage_metadata.total_token_count)
 

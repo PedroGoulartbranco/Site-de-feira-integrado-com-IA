@@ -1,5 +1,9 @@
 let pesquisa = document.getElementById("barra_pesquisa")
 let botao_pesquisar = document.getElementById("botao_pesquisar")
+let filtros = ['nenhum']
+let mostrar_filtros = document.getElementById("filtros")
+
+mostrar_filtros.innerHTML= filtros
 
 
 botao_pesquisar.addEventListener("click", function(event){
@@ -23,8 +27,12 @@ botao_pesquisar.addEventListener("click", function(event){
     .then(response => response.json())
 
     .then(data => {
-        
+        atualizar_filtro(data.filtros)
     })
 
     .catch(error => console.log(error));
 })
+
+function atualizar_filtro(filtros) {
+    mostrar_filtros.innerHTML= filtros
+}

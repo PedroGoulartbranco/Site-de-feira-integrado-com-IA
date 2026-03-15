@@ -16,7 +16,7 @@
         <input type="text" class="form-control" id="barra_pesquisa" placeholder="Filtro: {% for filtro in filtros %} {{filtro}} {% endfor %}" aria-label="Username" aria-describedby="basic-addon1">
         <button type="button" class="btn btn-primary" id="botao_pesquisar">Pesquisar</button>
     </div>
-    <p>Filtro: {% for filtro in filtros %} {{filtro}} {% endfor %}</p>
+    <p>Filtro: <span id="filtros"></span></p>
     <div class="produtos">
         {% for produto in produtos %}
         <div class="card" style="width: 18rem">

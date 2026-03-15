@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import os
 import google.generativeai as genai
 import json
+import ast
 
 load_dotenv()
 
@@ -51,6 +52,12 @@ REGRAS DE OURO:
 - "Saúde", "Limpo", "Alergia", "Espirro" -> Retornar: travesseiro, colchao, antialergico
 - "Autonomia", "Livre", "Baixinho" -> Retornar: cama, montessoriano
 
+###
+-Nomes Próprios e Pessoas: Se a entrada for um nome de pessoa (ex: Pedro, Maria, Enzo), trate como termo irrelevante.
+-Lugares e Assuntos Aleatórios: Se a entrada for um lugar, marca externa ou assunto sem relação direta com móveis (ex: Brasil, Google, Futebol), trate como irrelevante.
+-Ação Obrigatória: Para qualquer termo que não descreva um objeto do catálogo ou uma dor/necessidade real (sono, brincadeira, organização), você deve retornar exatamente ['nenhum'].
+-Não deduza: Não tente adivinhar que "Pedro" é uma criança que precisa de um "sofá". Se não há menção a produto ou uso, a resposta correta é ['nenhum'].
+
 ### Regra Busca Abstrata
 -Se o usuário digitar algo muito vago, aleatório ou que não tenha um filtro direto (ex: "quero algo legal", "me surpreenda", "aleatório"), NÃO responda "nenhum".
 
@@ -68,17 +75,18 @@ genai.configure(api_key=chave_api)
 
 model = genai.GenerativeModel(
     #gemini-2.5-flash
-    model_name='gemini-3-flash-preview',
+    #gemini-3-flash-preview
+    model_name='gemini-2.5-flash',
     system_instruction=configuracao_ia,
     generation_config={
           "temperature": 0.3
     }
 )
 
-
-response = model.generate_content("Infantil")
-
-print(response.text, response.usage_metadata.total_token_count)
-
 def tranformar_pesquisa_em_filtro(pesquisa):
-    pass
+    response = model.generate_content(pesquisa)
+    #Usando a biblioteca ASt como segurança contra comandos vindo da pesquisa
+    filtros_ia = ast.literal_eval(response.text)
+    filtros_ia = list(set(filtros_ia))
+
+    return filtros_ia

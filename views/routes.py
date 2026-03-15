@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, jsonify
 import json
+from logica_filtros import tranformar_pesquisa_em_filtro
 
 views_bp = Blueprint("views", __name__)
 
@@ -14,4 +15,6 @@ def home():
 def pesquisar():
     pesquisa = request.json["pesquisa"]
     print(pesquisa)
+    filtros_ia = tranformar_pesquisa_em_filtro(pesquisa)
+    print(filtros_ia)
     return jsonify({"pesquisa": pesquisa})

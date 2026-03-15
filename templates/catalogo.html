@@ -17,20 +17,11 @@
         <button type="button" class="btn btn-primary" id="botao_pesquisar">Pesquisar</button>
     </div>
     <p>Filtro: <span id="filtros"></span></p>
-    <div class="produtos">
-        {% for produto in produtos %}
-        <div class="card" style="width: 18rem">
-            <img src="{{ url_for('static', filename='img/produtos/' + produto.img) }}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">{{produto.name}}</h5>
-                <p class="card-text">
-                    Produto
-                </p>
-                <a href="#" class="btn btn-primary">Adicionar no Carrinho</a>
-            </div>
-        </div>
-        {% endfor %}
+    <div id="produtos2">
+
     </div>
+    
+    
     <script src="{{url_for('static', filename=('js/script.js'))}}"></script>
 </body>
 

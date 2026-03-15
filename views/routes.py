@@ -17,3 +17,9 @@ def pesquisar():
     filtros_ia = tranformar_pesquisa_em_filtro(pesquisa)
     print(filtros_ia)
     return jsonify({"filtros": filtros_ia})
+
+@views_bp.route("/pegar_produtos", methods=['GET'])
+def mandar_produtos():
+    with open("data/produtos.json", encoding="utf-8") as pro:
+        produtos = json.load(pro)
+    return jsonify({"produtos": produtos})

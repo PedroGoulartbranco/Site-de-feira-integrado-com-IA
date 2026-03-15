@@ -47,10 +47,11 @@ REGRAS DE OURO:
 - NUNCA mande a resposta vazia se for mandar vazia escreva ['Nenhum']
 
 ### MAPA DE TRADUÇÃO:
-- "Criativo", "Animado", "Divertido", "Bagunça", "Cabana" -> Retornar: sofa, brinquedo, ludico, infantil
-- "Chique", "Elegante", "Moderno", "Design" -> Retornar: premium, poltrona, cama
-- "Saúde", "Limpo", "Alergia", "Espirro" -> Retornar: travesseiro, colchao, antialergico
-- "Autonomia", "Livre", "Baixinho" -> Retornar: cama, montessoriano
+- "Divertido", "Bagunça", "Animado", "Criança" -> Retornar: ['brinquedo', 'infantil']
+- "Cabana", "Forte", "Esconderijo", "Criativo" ->  Retornar: ['sofa', 'ludico', 'brinquedo']
+- "Chique", "Elegante", "Moderno", "Design", "Premium" -> Retornar: ['poltrona', 'cama']
+- "Saúde", "Limpo", "Alergia", "Espirro" -> Retornar: ['antialergico']
+- "Autonomia", "Livre", "Baixinho", "Independente" ->Retornar: ['cama', 'montessoriano']
 
 ###
 -Nomes Próprios e Pessoas: Se a entrada for um nome de pessoa (ex: Pedro, Maria, Enzo), trate como termo irrelevante.

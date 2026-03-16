@@ -1,6 +1,7 @@
 let pesquisa = document.getElementById("barra_pesquisa")
 let botao_pesquisar = document.getElementById("botao_pesquisar")
 let filtros = ['nenhum']
+let atributos = ['nenhum']
 let mostrar_filtros = document.getElementById("filtros")
 let produtos = []
 
@@ -28,16 +29,17 @@ botao_pesquisar.addEventListener("click", function (event) {
         .then(response => response.json())
 
         .then(data => {
-            atualizar_filtro(data.filtros)
+            atualizar_filtro(data.filtros, data.atributos)
             filtros = data.filtros
+            atributos = data.atributos
             mostrar_produtos(produtos)
         })
 
         .catch(error => console.log(error));
 })
 
-function atualizar_filtro(filtros) {
-    mostrar_filtros.innerHTML = filtros
+function atualizar_filtro(filtros, atributos) {
+    mostrar_filtros.innerHTML = `${filtros} | ${atributos}`
 }
 
 async function pegar_produtos() {

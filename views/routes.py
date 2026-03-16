@@ -4,8 +4,8 @@ from logica_filtros import tranformar_pesquisa_em_filtro, filtros, atributos
 
 views_bp = Blueprint("views", __name__)
 
-filtros_somento = []
-atributos_somento = []
+filtros_somente= []
+atributos_somente = []
 
 @views_bp.route("/")
 def home():
@@ -19,14 +19,14 @@ def pesquisar():
     print(pesquisa)
     filtros_ia = tranformar_pesquisa_em_filtro(pesquisa)
     for f in filtros_ia:
-        if f in filtros:
-            filtros_somento.append(f)
-        else:
-            atributos_somento.append(f)
+        if f in filtros and f not in filtros_somente:
+            filtros_somente.append(f)
+        elif f in atributos and f not in atributos_somente:
+            atributos_somente.append(f)
 
-    print(filtros_somento, atributos_somento)
+    print(filtros_somente, atributos_somente)
     
-    return jsonify({"filtros": filtros_ia})
+    return jsonify({"filtros": filtros_somente, "atributos": atributos_somente})
 
 @views_bp.route("/pegar_produtos", methods=['GET'])
 def mandar_produtos():

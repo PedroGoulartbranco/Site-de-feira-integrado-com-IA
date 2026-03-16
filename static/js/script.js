@@ -55,9 +55,11 @@ async function pegar_produtos() {
 function mostrar_produtos(produtos) {
     let div_produtos_mostrar = document.getElementById("produtos")
     div_produtos_mostrar.innerHTML = ``
-    console.log(filtros)
-    produtos.forEach(produto => {
-        if (filtros.includes("nenhum")) {
+    let filtro_ativado = false
+    let produtos_filtrados = []
+
+    if (filtros.includes("nenhum")) {
+        produtos.forEach(produto => {
             div_produtos_mostrar.innerHTML += `
             <div class="card" style="width: 18rem">
                 <img src="static/img/produtos/${produto.img}" class="card-img-top" alt="...">
@@ -69,8 +71,8 @@ function mostrar_produtos(produtos) {
                     <a href="#" class="btn btn-primary">Adicionar no Carrinho</a>
                 </div>
             </div>`
-        } else {
-            let produtos_filtrados = produtos.filter(produto => {
+    }) } else {
+        produtos_filtrados = produtos.filter(produto => {
                 return produto.filtros.some(filtro => filtros.includes(filtro))
             })
             produtos_filtrados.forEach(produto => {
@@ -86,10 +88,9 @@ function mostrar_produtos(produtos) {
                     </div>
                 </div>`
             });
-        }
-        
-    });
-}
+    }
+    };
+
 
 document.addEventListener("DOMContentLoaded", async function() {
     await pegar_produtos();

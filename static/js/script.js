@@ -65,7 +65,9 @@ function mostrar_produtos(produtos) {
                 <div class="card-body">
                     <h5 class="card-title">${produto.name}</h5>
                     <p class="card-text">
-                        Produto
+                        Produto<br>
+                        Filtros: ${produto.filtros} <br>
+                        Atributos: ${produto.atributos}
                     </p>
                     <a href="#" class="btn btn-primary">Adicionar no Carrinho</a>
                 </div>
@@ -75,6 +77,7 @@ function mostrar_produtos(produtos) {
         produtos_filtrados = produtos.filter(produto => {
             return produto.filtros.some(filtro => filtros.includes(filtro))
         })
+        console.log(produtos_filtrados)
         produtos_filtrados.forEach(produto => {
             div_produtos_mostrar.innerHTML += `
                 <div class="card" style="width: 18rem">
@@ -82,8 +85,11 @@ function mostrar_produtos(produtos) {
                     <div class="card-body">
                         <h5 class="card-title">${produto.name}</h5>
                         <p class="card-text">
-                            Produto
+                            Produto<br>
+                            Filtros: ${produto.filtros} <br>
+                            Atributos: ${produto.atributos}
                         </p>
+                        
                         <a href="#" class="btn btn-primary">Adicionar no Carrinho</a>
                     </div>
                 </div>`

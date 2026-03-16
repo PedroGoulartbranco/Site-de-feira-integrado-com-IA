@@ -12,12 +12,11 @@ chave_api = os.getenv("CHAVE_API")
 
 filtros = [
     # Categorias Principais
-    'poltrona', 'piscina', 'sofa', 'cama', 'cama casal', 'cama solteiro', 
-    'travesseiro', 'colchao', 'acessorio', 'brinquedo',
-    
-    # Atributos
-    'impermeavel', 'antialergico', 'montessoriano', 'lavavel', 'infantil', 'seguranca'
+    'poltrona',  'sofa', 'cama', 'cama casal', 'cama solteiro', 
+    'travesseiro', 'colchao', 'acessorio',
 ]
+
+atributos = ['impermeavel', 'antialergico', 'montessoriano', 'lavavel', 'infantil', 'seguranca']
 
 with open("data/produtos.json", encoding="utf-8") as pro:
         produtos = json.load(pro)
@@ -29,6 +28,7 @@ prompt_para_classificar_filtro_produtos = f"""
     voce me fale quais filtros colcoar em cada produto
     POde ter mais de um filtro por produto
     Filtros: {filtros}
+    Atributos para serem usado nos filtros tambem: {atributos}
     Produtos: {produtos}
 """
 
@@ -62,7 +62,7 @@ REGRAS DE OURO:
 ### Regra Busca Abstrata
 -Se o usuário digitar algo muito vago, aleatório ou que não tenha um filtro direto (ex: "quero algo legal", "me surpreenda", "aleatório"), NÃO responda "nenhum".
 
--Em vez disso, retorne os nossos produtos coringa: (sofa, brinquedo) ou (cama, montessoriano, seguranca) ou (poltrona, conforto) ou filtro unico.
+-Em vez disso, retorne os nossos produtos coringa: (sofa) ou (cama, montessoriano, seguranca) ou (poltrona, conforto) ou filtro unico.
 
 -A ideia é sempre tentar mostrar algo, a menos que ele peça algo ofensivo ou totalmente fora do nicho de móveis (como "pizza" ou "carro").
 

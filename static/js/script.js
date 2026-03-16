@@ -136,7 +136,8 @@ function mostrar_produtos(produtos) {
 }
 
 function remover(nome) {
-    if (filtros.includes(nome)) {
+    if (nome != "nenhum") {
+        if (filtros.includes(nome)) {
         console.log("chamou filtro")
         filtros = filtros.filter(filtro => filtro != nome)
     }
@@ -145,6 +146,7 @@ function remover(nome) {
     }
     console.log(filtros)
     atualizar_pagina()
+    }
 }
 
 async function atualizar_pagina() {

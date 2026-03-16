@@ -23,3 +23,37 @@ body {
 h1 {
     text-align: center;
 }
+
+.botao-filtro {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f1f3f5; 
+    color: #495057; 
+    border: none; 
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin: 4px;
+}
+
+.botao-filtro:hover {
+    background-color: #e9ecef;
+    color: #212529;
+}
+
+/* O "X" mais discreto */
+.botao-filtro::after {
+    content: "×"; 
+    margin-left: 8px;
+    font-size: 16px;
+    line-height: 1;
+    opacity: 0.4;
+}
+
+.botao-filtro:hover::after {
+    opacity: 1;
+    color: #dc3545; 
+}

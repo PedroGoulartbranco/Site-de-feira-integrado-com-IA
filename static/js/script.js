@@ -37,12 +37,12 @@ function atualizar_filtro(filtros, atributos) {
   div_mostrar_filtros.innerHTML = ``
   filtros.forEach(filtro => {
         div_mostrar_filtros.innerHTML += `
-            <button type="button" class="btn-close-custom" onclick="remover('${filtro}')">${filtro}</button>
+            <button type="button" class="botao-filtro" onclick="remover('${filtro}')">${filtro}</button>
         `
   });
   atributos.forEach(atributo => {
     div_mostrar_filtros.innerHTML += `
-            <button type="button" class="btn-close-custom" onclick="remover('${atributo}')">${atributo}</button>
+            <button type="button" class="botao-filtro"" onclick="remover('${atributo}')">${atributo}</button>
     `
   })
 }

@@ -2,42 +2,42 @@
     {
     "name": "CAMA CASAL MONTESSORIANA LISA", 
     "price": "5.344,00",
-    "filter": ["cama", "cama casal", "montessoriano", "infantil", "seguranca", "lavavel", "impermeavel"],
+    "filtros": ["cama", "cama casal", "montessoriano", "infantil", "seguranca", "lavavel", "impermeavel"],
     "img": "CAMA-CASAL-MONTESSORIANA-LISA.png",
     "descricao_IA": "Cama infantil de estilo montessoriano e minimalista. Focada em autonomia e segurança para bebês e crianças pequenas. Estrutura baixa, estofada com espuma D35 Soft e design clean (cabeceira lisa). Ideal para quem busca decoração acolhedora, moderna e funcional (tecido repelente a líquidos e capa lavável). Vibe: segura, independente, prática, higiênica e elegante. Palavras-chave: quarto de bebê, transição berço, infantil, macio, fácil de limpar, proteção, design europeu."
     },
      {
     "name": "SOFÁ DE BRINCAR PLICO", 
     "price": " 3.238,00",
-    "filter": ["sofa", "brinquedo", "infantil", "montessoriano", "lavavel", "impermeavel", "seguranca"],
+    "filtros": ["sofa", "brinquedo", "infantil", "montessoriano", "lavavel", "impermeavel", "seguranca"],
     "img": "SOFA-DE-BRINCAR-PLICO.png",
     "descricao_IA": "Sofá modular infantil e lúdico com design multifuncional. Transforma-se em cabana, escorregador, túnel ou cama de soneca. Estrutura leve e firme com espuma D35 Soft, ideal para brinquedotecas e quartos infantis. Vibe: criativa, interativa, montessoriana e dinâmica. Focado em brincar livre e desenvolvimento motor. Tecido repelente a líquidos, atóxico e lavável. Palavras-chave: diversão, modular, interativo, aventura, fácil de montar, seguro para crianças, resistente."
     },
      {
     "name": "POLTRONA TULA INFANTIL", 
     "price": "1.862,00",
-    "filter": ["poltrona", "infantil", "seguranca", "lavavel", "impermeavel"],
+    "filtros": ["poltrona", "infantil", "seguranca", "lavavel", "impermeavel"],
     "img": "POLTRONA-TULA-INFANTIL.png",
     "descricao_IA": "Poltrona infantil ergonômica com design atemporal e elegante. Focada em momentos de baixa energia: leitura, descanso e relaxamento. Estrutura segura com bordas arredondadas (sem quinas) e espuma D35 Soft de alta durabilidade. Ideal para criar um 'cantinho da leitura' ou um espaço de calma no quarto infantil. Vibe: aconchegante, tranquila, ergonômica e sofisticada. Tecido repelente a líquidos e totalmente lavável. Palavras-chave: leitura, relaxar, descanso, apoio lombar, poltrona de quarto, móvel seguro, durável."
     },
     {
     "name": "TRAVESSEIRO INFANTIL", 
     "price": "740,10",
-    "filter": ["travesseiro", "infantil", "seguranca", "antialergico"],
+    "filtros": ["travesseiro", "infantil", "seguranca", "antialergico"],
     "img": "TRAVESSEIRO-INFANTIL.png",
     "descricao_IA": "Travesseiro infantil premium em látex 100% natural com suporte progressivo. Focado em saúde do sono e segurança extrema (antissufocante e respirável). Altamente higiênico: naturalmente hipoalergênico, resistente a ácaros e com proteção antiviral/antibacteriana (Zinco). Vibe: saudável, tecnológico, seguro e fresco (conforto térmico). Ideal para crianças com alergias ou pais que buscam o melhor suporte cervical. Palavras-chave: sono profundo, antibacteriano, látex belga, sem alergia, respirável, refrescante, ortopédico infantil."
     },
     {
     "name": "COLCHÃO LÁTEX INFANTIL", 
     "price": "5.815,34",
-    "filter": ["colchao", "infantil", "impermeavel", "antialergico"],
+    "filtros": ["colchao", "infantil", "impermeavel", "antialergico"],
     "img": "COLCHAO-LATEX-INFANTIL.png",
     "descricao_IA": "Colchão infantil de alta performance com 15cm de látex natural D65. Foco total em suporte ortopédico, higiene e longevidade. Possui tripla proteção: antiviral, antibacteriana e antifúngica, além de ser 100% impermeável (proteção contra vazamentos/xixi). Vibe: premium, higiênica, tecnológica e sustentável. Ideal para pais que buscam um colchão que dure todo o crescimento da criança sem acumular ácaros ou odores. Palavras-chave: impermeável, suporte firme, látex belga, fácil de limpar, durável, sono saudável, ecológico."
     },
     {
     "name": "CAPA AVULSA SOFÁ DE BRINCAR PLICO", 
     "price": "1.101,00",
-    "filter": ["acessorio", "sofa", "lavavel", "impermeavel", "brinquedo", "infantil"],
+    "filtros": ["acessorio", "sofa", "lavavel", "impermeavel", "brinquedo", "infantil"],
     "img": "CAPA-AVULSA-SOFA-DE-BRINCAR-PLICO.png",
     "descricao_IA": "Acessório de reposição e manutenção para o Sofá Plico. Foco em praticidade, higiene e renovação do ambiente. Permite trocar a cor do móvel ou garantir o uso do sofá enquanto a outra capa está lavando. Vibe: prática, organizada, versátil e durável. Possui tecido repelente a líquidos e zíper funcional. Ideal para quem já possui o sofá e busca conveniência. Palavras-chave: capa extra, trocar cor, reposição, fácil de lavar, manutenção, durabilidade, organização."
     }

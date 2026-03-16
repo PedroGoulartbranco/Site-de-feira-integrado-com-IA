@@ -77,7 +77,7 @@ genai.configure(api_key=chave_api)
 model = genai.GenerativeModel(
     #gemini-2.5-flash
     #gemini-3-flash-preview
-    model_name='gemini-2.5-flash',
+    model_name='gemini-3-flash-preview',
     system_instruction=configuracao_ia,
     generation_config={
           "temperature": 0.3

@@ -29,6 +29,8 @@ botao_pesquisar.addEventListener("click", function(event){
 
     .then(data => {
         atualizar_filtro(data.filtros)
+        filtros = data.filtros
+        mostrar_produtos(produtos)
     })
 
     .catch(error => console.log(error));
@@ -52,19 +54,39 @@ async function pegar_produtos() {
 
 function mostrar_produtos(produtos) {
     let div_produtos_mostrar = document.getElementById("produtos")
+    div_produtos_mostrar.innerHTML = ``
+    console.log(filtros)
     produtos.forEach(produto => {
-        console.log("teste", produto.img)
-        div_produtos_mostrar.innerHTML += `
-        <div class="card" style="width: 18rem">
-            <img src="static/img/produtos/${produto.img}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${produto.name}</h5>
-                <p class="card-text">
-                    Produto
-                </p>
-                <a href="#" class="btn btn-primary">Adicionar no Carrinho</a>
-            </div>
-        </div>`
+        if (filtros.includes("nenhum")) {
+            div_produtos_mostrar.innerHTML += `
+            <div class="card" style="width: 18rem">
+                <img src="static/img/produtos/${produto.img}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${produto.name}</h5>
+                    <p class="card-text">
+                        Produto
+                    </p>
+                    <a href="#" class="btn btn-primary">Adicionar no Carrinho</a>
+                </div>
+            </div>`
+        } else {
+            let produtos_filtrados = produtos.filter(produto => {
+                return produto.filtros.some(filtro => filtros.includes(filtro))
+            })
+            produtos_filtrados.forEach(produto => {
+                div_produtos_mostrar.innerHTML += `
+                <div class="card" style="width: 18rem">
+                    <img src="static/img/produtos/${produto.img}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">${produto.name}</h5>
+                        <p class="card-text">
+                            Produto
+                        </p>
+                        <a href="#" class="btn btn-primary">Adicionar no Carrinho</a>
+                    </div>
+                </div>`
+            });
+        }
         
     });
 }

@@ -60,7 +60,17 @@ function mostrar_produtos(produtos) {
     let produtos_filtrados = []
 
     if (filtros.includes("nenhum")) {
-        produtos.forEach(produto => {
+        if (atributos.includes("nenhum")) {
+            produtos.forEach(produto => {
+                produtos_filtrados.push(produto)
+            })
+        } else {
+            produtos_filtrados = produtos.filter(produto => {
+            produto_esta_no_atributos = produto.atributos.some(atributo => atributos.includes(atributo));
+            return  produto_esta_no_atributos
+        })
+        }
+        produtos_filtrados.forEach(produto => {
             div_produtos_mostrar.innerHTML += `
             <div class="card" style="width: 18rem">
                 <img src="static/img/produtos/${produto.img}" class="card-img-top" alt="...">

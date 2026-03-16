@@ -23,6 +23,10 @@ def pesquisar():
             filtros_somente.append(f)
         elif f in atributos and f not in atributos_somente:
             atributos_somente.append(f)
+    if len(filtros_somente) == 0:
+        filtros_somente.append('nenhum')
+    if len(atributos_somente) == 0:
+        atributos_somente.append('nenhum')
 
     print(filtros_somente, atributos_somente)
     

@@ -11,10 +11,14 @@
 </head>
 
 <body>
-    <h1>Cátalogo</h1>
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" id="barra_pesquisa" placeholder="Filtro: {% for filtro in filtros %} {{filtro}} {% endfor %}" aria-label="Username" aria-describedby="basic-addon1">
-        <button type="button" class="btn btn-primary" id="botao_pesquisar">Pesquisar</button>
+    <header class="container text-center py-4">
+        <h1 class="display-5 fw-normal">Cátalogo</h1>
+    </header>
+    <div class="container mt-4">
+        <div class="input-group shadow-sm mx-auto w-100 w-md-75">
+            <input type="text" class="form-control" id="barra_pesquisa" placeholder="O que busca?">
+            <button type="button" class="btn btn-primary" id="botao_pesquisar">Pesquisar</button>
+        </div>
     </div>
     <p>Filtro: <span id="filtros"></span></p>
     <div class="container py-5">
@@ -22,8 +26,8 @@
 
         </div>
     </div>
-    
-    
+
+
     <script src="{{url_for('static', filename=('js/script.js'))}}"></script>
 </body>
 

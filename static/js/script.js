@@ -4,8 +4,9 @@ let filtros = ["nenhum"];
 let atributos = ["nenhum"];
 let mostrar_filtros = document.getElementById("filtros");
 let produtos = [];
+let div_mostrar_filtros = document.getElementById("mostrar_filtros");
 
-mostrar_filtros.innerHTML = filtros;
+mostrar_filtros.innerHTML = filtros; //Limpa os filtros
 
 botao_pesquisar.addEventListener("click", function (event) {
   event.preventDefault(); //Não recarrega a pagina
@@ -33,6 +34,17 @@ botao_pesquisar.addEventListener("click", function (event) {
 
 function atualizar_filtro(filtros, atributos) {
   mostrar_filtros.innerHTML = `${filtros} | ${atributos}`;
+  div_mostrar_filtros.innerHTML = ``
+  filtros.forEach(filtro => {
+        div_mostrar_filtros.innerHTML += `
+            <button type="button" class="btn-close-custom" onclick="remover('${filtro}')">${filtro}</button>
+        `
+  });
+  atributos.forEach(atributo => {
+    div_mostrar_filtros.innerHTML += `
+            <button type="button" class="btn-close-custom" onclick="remover('${atributo}')">${atributo}</button>
+    `
+  })
 }
 
 async function pegar_produtos() {
@@ -123,8 +135,25 @@ function mostrar_produtos(produtos) {
   }
 }
 
+function remover(nome) {
+    if (filtros.includes(nome)) {
+        console.log("chamou filtro")
+        filtros = filtros.filter(filtro => filtro != nome)
+    }
+    if (atributos.includes(nome)) {
+        atributos = atributos.filter(atributo => atributo != nome)
+    }
+    console.log(filtros)
+    atualizar_pagina()
+}
+
+async function atualizar_pagina() {
+    atualizar_filtro(filtros, atributos)
+    await pegar_produtos();
+    mostrar_produtos(produtos);
+}
+
 //Chama essas duas funções toda vez que a pagina é reiniciada
 document.addEventListener("DOMContentLoaded", async function () {
-  await pegar_produtos();
-  mostrar_produtos(produtos);
+    atualizar_pagina()
 });

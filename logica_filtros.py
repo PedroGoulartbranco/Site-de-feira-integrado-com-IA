@@ -16,7 +16,7 @@ filtros = [
     'travesseiro', 'colchao', 'acessorio',
 ]
 
-atributos = ['impermeavel', 'antialergico', 'montessoriano', 'lavavel', 'infantil', 'seguranca']
+atributos = ['impermeavel', 'antialergico', 'montessoriano', 'lavavel', 'infantil', 'seguranca', "sofa"]
 
 with open("data/produtos.json", encoding="utf-8") as pro:
         produtos = json.load(pro)
@@ -41,7 +41,7 @@ LISTA DE PALAVRAS PERMITIDAS (Você NUNCA pode inventar uma palavra que não est
 - Atributos: {atributos}
 
 ### MAPA DE TRADUÇÃO (Exemplos de raciocínio):
-- "Divertido", "Bagunça", "Criança", "Cabana" -> Retornar: ["sofa", "cama", "infantil"]
+- "Divertido", "Bagunça", "Criança", "Cabana" -> Retornar: ["sofa", "cama", "infantil", "seguranca"]
 - "Chique", "Elegante", "Moderno", "Premium" -> Retornar: ["poltrona", "sofa", "cama casal"]
 - "Saúde", "Limpo", "Alergia", "Espirro" -> Retornar: ["antialergico", "lavavel"]
 - "Autonomia", "Livre", "Baixinho" -> Retornar: ["cama solteiro", "montessoriano", "seguranca"]
@@ -51,6 +51,8 @@ LISTA DE PALAVRAS PERMITIDAS (Você NUNCA pode inventar uma palavra que não est
 1. Assuntos Irrelevantes ou Nomes: Se o usuário digitar nomes próprios (ex: Pedro, Maria) ou coisas totalmente sem relação com a loja de móveis (ex: Futebol, Carro, Pizza), retorne EXATAMENTE: ["nenhum"]
 2. Buscas Vagas: Se a busca for vaga ("quero algo legal", "me surpreenda"), retorne produtos curinga da lista, como: ["sofa", "poltrona"]
 3. Formato da Resposta: Você deve responder ÚNICA E EXCLUSIVAMENTE com a lista no formato de array. Não coloque explicações, não diga "Aqui está", não use blocos de código (```). Apenas a lista.
+4. SELETIVIDADE DE ATRIBUTOS: Só adicione termos da lista de ATRIBUTOS se o usuário mencionar explicitamente uma necessidade relacionada (ex: "seguro", "para meu filho", "fácil de limpar"). Se o usuário buscar apenas pelo objeto (ex: "sofa", "algo para sentar"), retorne APENAS a categoria e coloque "nenhum" na parte de atributos.
+5. FOCO NA INTENÇÃO: "Algo para sentar" deve retornar apenas categorias como ["sofa", "poltrona"]. Não presuma que quem quer sentar é uma criança ou precisa de segurança extra, a menos que isso seja dito.
 
 EXEMPLO DE RESPOSTA PERFEITA:
 ["cama casal", "montessoriano", "infantil"]
@@ -60,7 +62,7 @@ genai.configure(api_key=chave_api)
 model = genai.GenerativeModel(
     #gemini-2.5-flash
     #gemini-3-flash-preview
-    model_name='gemini-3-flash-preview',
+    model_name='gemini-2.5-flash',
     system_instruction=configuracao_ia,
     generation_config={
           "temperature": 0.3

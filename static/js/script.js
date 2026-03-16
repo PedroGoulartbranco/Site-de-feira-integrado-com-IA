@@ -58,6 +58,8 @@ function mostrar_produtos(produtos) {
     let div_produtos_mostrar = document.getElementById("produtos")
     div_produtos_mostrar.innerHTML = ``
     let produtos_filtrados = []
+    let produto_esta_no_atributos = false
+    let produto_esta_no_filtro = false
 
     if (filtros.includes("nenhum")) {
         if (atributos.includes("nenhum")) {
@@ -86,12 +88,20 @@ function mostrar_produtos(produtos) {
             </div>`
         })
     } else {
-        produtos_filtrados = produtos.filter(produto => {
+        if (atributos.includes("nenhum")) {
+            produtos_filtrados = produtos.filter(produto => {
+            produto_esta_no_filtro = produto.filtros.some(filtro => filtros.includes(filtro));
+
+            return produto_esta_no_filtro
+        })
+        } else {
+            produtos_filtrados = produtos.filter(produto => {
             produto_esta_no_filtro = produto.filtros.some(filtro => filtros.includes(filtro));
             produto_esta_no_atributos = produto.atributos.some(atributo => atributos.includes(atributo));
 
             return produto_esta_no_filtro && produto_esta_no_atributos
         })
+        }
         console.log(produtos_filtrados)
         produtos_filtrados.forEach(produto => {
             div_produtos_mostrar.innerHTML += `

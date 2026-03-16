@@ -1,10 +1,10 @@
-#produtos {
+/* #produtos {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
-}
+} */
 body {
-    background-color: rgb(236, 241, 236);
+    background-color: #f8f9fa;
 }
 
 .card img{

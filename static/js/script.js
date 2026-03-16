@@ -1,129 +1,130 @@
-let pesquisa = document.getElementById("barra_pesquisa")
-let botao_pesquisar = document.getElementById("botao_pesquisar")
-let filtros = ['nenhum']
-let atributos = ['nenhum']
-let mostrar_filtros = document.getElementById("filtros")
-let produtos = []
+let pesquisa = document.getElementById("barra_pesquisa");
+let botao_pesquisar = document.getElementById("botao_pesquisar");
+let filtros = ["nenhum"];
+let atributos = ["nenhum"];
+let mostrar_filtros = document.getElementById("filtros");
+let produtos = [];
 
-mostrar_filtros.innerHTML = filtros
-
+mostrar_filtros.innerHTML = filtros;
 
 botao_pesquisar.addEventListener("click", function (event) {
-    event.preventDefault(); //Não recarrega a pagina
-    usuario_digitou = pesquisa.value
-    console.log(usuario_digitou)
+  event.preventDefault(); //Não recarrega a pagina
+  usuario_digitou = pesquisa.value;
+  console.log(usuario_digitou);
 
-    fetch('http://127.0.0.1:5000/pesquisar', {
-        method: 'POST',
-        headers: {
+  fetch("http://127.0.0.1:5000/pesquisar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ pesquisa: usuario_digitou }),
+  })
+    .then((response) => response.json())
 
-            'Content-Type': 'application/json'
-
-        },
-        body: JSON.stringify(
-            { pesquisa: usuario_digitou }
-        )
-
+    .then((data) => {
+      atualizar_filtro(data.filtros, data.atributos);
+      filtros = data.filtros;
+      atributos = data.atributos;
+      mostrar_produtos(produtos);
     })
 
-        .then(response => response.json())
-
-        .then(data => {
-            atualizar_filtro(data.filtros, data.atributos)
-            filtros = data.filtros
-            atributos = data.atributos
-            mostrar_produtos(produtos)
-        })
-
-        .catch(error => console.log(error));
-})
+    .catch((error) => console.log(error));
+});
 
 function atualizar_filtro(filtros, atributos) {
-    mostrar_filtros.innerHTML = `${filtros} | ${atributos}`
+  mostrar_filtros.innerHTML = `${filtros} | ${atributos}`;
 }
 
 async function pegar_produtos() {
-    await fetch('http://127.0.0.1:5000/pegar_produtos')
+  await fetch("http://127.0.0.1:5000/pegar_produtos")
+    .then((response) => response.json())
 
-        .then(response => response.json())
+    .then((data) => {
+      produtos = data.produtos;
+    })
 
-        .then(data => {
-            produtos = data.produtos
-        })
-
-        .catch(error => console.log(error));
+    .catch((error) => console.log(error));
 }
 
 function mostrar_produtos(produtos) {
-    let div_produtos_mostrar = document.getElementById("produtos")
-    div_produtos_mostrar.innerHTML = ``
-    let produtos_filtrados = []
-    let produto_esta_no_atributos = false
-    let produto_esta_no_filtro = false
+  let div_produtos_mostrar = document.getElementById("produtos");
+  div_produtos_mostrar.innerHTML = ``;
+  let produtos_filtrados = [];
+  let produto_esta_no_atributos = false;
+  let produto_esta_no_filtro = false;
 
-    if (filtros.includes("nenhum")) {
-        if (atributos.includes("nenhum")) {
-            produtos.forEach(produto => {
-                produtos_filtrados.push(produto)
-            })
-        } else {
-            produtos_filtrados = produtos.filter(produto => {
-            produto_esta_no_atributos = produto.atributos.some(atributo => atributos.includes(atributo));
-            return  produto_esta_no_atributos
-        })
-        }
-        produtos_filtrados.forEach(produto => {
-            div_produtos_mostrar.innerHTML += `
-            <div class="card" style="width: 18rem">
-                <img src="static/img/produtos/${produto.img}" class="card-img-top" alt="...">
-                <div class="card-body">
+  if (filtros.includes("nenhum")) {
+    if (atributos.includes("nenhum")) {
+      produtos.forEach((produto) => {
+        produtos_filtrados.push(produto);
+      });
+    } else {
+      produtos_filtrados = produtos.filter((produto) => {
+        produto_esta_no_atributos = produto.atributos.some((atributo) =>
+          atributos.includes(atributo),
+        );
+        return produto_esta_no_atributos;
+      });
+    }
+    produtos_filtrados.forEach((produto) => {
+      div_produtos_mostrar.innerHTML += `
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+            <div class="card h-100"> 
+                <img src="static/img/produtos/${produto.img}" class="card-img-top" alt="..." style="height: 200px; object-fit: contain;">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${produto.name}</h5>
                     <p class="card-text">
-                        Produto<br>
                         Filtros: ${produto.filtros} <br>
                         Atributos: ${produto.atributos}
                     </p>
-                    <a href="#" class="btn btn-primary">Adicionar no Carrinho</a>
+                    <a href="#" class="btn btn-primary mt-auto">Adicionar no Carrinho</a>
                 </div>
-            </div>`
-        })
+            </div>
+        </div>`;
+    });
+  } else {
+    if (atributos.includes("nenhum")) {
+      produtos_filtrados = produtos.filter((produto) => {
+        produto_esta_no_filtro = produto.filtros.some((filtro) =>
+          filtros.includes(filtro),
+        );
+
+        return produto_esta_no_filtro;
+      });
     } else {
-        if (atributos.includes("nenhum")) {
-            produtos_filtrados = produtos.filter(produto => {
-            produto_esta_no_filtro = produto.filtros.some(filtro => filtros.includes(filtro));
+      produtos_filtrados = produtos.filter((produto) => {
+        produto_esta_no_filtro = produto.filtros.some((filtro) =>
+          filtros.includes(filtro),
+        );
+        produto_esta_no_atributos = produto.atributos.some((atributo) =>
+          atributos.includes(atributo),
+        );
 
-            return produto_esta_no_filtro
-        })
-        } else {
-            produtos_filtrados = produtos.filter(produto => {
-            produto_esta_no_filtro = produto.filtros.some(filtro => filtros.includes(filtro));
-            produto_esta_no_atributos = produto.atributos.some(atributo => atributos.includes(atributo));
-
-            return produto_esta_no_filtro && produto_esta_no_atributos
-        })
-        }
-        console.log(produtos_filtrados)
-        produtos_filtrados.forEach(produto => {
-            div_produtos_mostrar.innerHTML += `
-                <div class="card" style="width: 18rem">
-                    <img src="static/img/produtos/${produto.img}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">${produto.name}</h5>
-                        <p class="card-text">
-                            Produto<br>
-                            Filtros: ${produto.filtros} <br>
-                            Atributos: ${produto.atributos}
-                        </p>
-                        
-                        <a href="#" class="btn btn-primary">Adicionar no Carrinho</a>
-                    </div>
-                </div>`
-        });
+        return produto_esta_no_filtro && produto_esta_no_atributos;
+      });
     }
-};
+    console.log(produtos_filtrados);
+    produtos_filtrados.forEach((produto) => {
+        div_produtos_mostrar.innerHTML += `
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center">
+            <div class="card h-100"> 
+                <img src="static/img/produtos/${produto.img}" class="card-img-top" alt="..." style="height: 200px; object-fit: contain;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">${produto.name}</h5>
+                    <p class="card-text">
+                        Filtros: ${produto.filtros} <br>
+                        Atributos: ${produto.atributos}
+                    </p>
+                    <a href="#" class="btn btn-primary mt-auto">Adicionar no Carrinho</a>
+                </div>
+            </div>
+        </div>`;
+    });
+  }
+}
 
-
+//Chama essas duas funções toda vez que a pagina é reiniciada
 document.addEventListener("DOMContentLoaded", async function () {
-    await pegar_produtos();
-    mostrar_produtos(produtos)
+  await pegar_produtos();
+  mostrar_produtos(produtos);
 });

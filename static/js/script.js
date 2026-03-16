@@ -3,7 +3,6 @@ let botao_pesquisar = document.getElementById("botao_pesquisar")
 let filtros = ['nenhum']
 let mostrar_filtros = document.getElementById("filtros")
 let produtos = []
-let pegou_produtos = false
 
 mostrar_filtros.innerHTML= filtros
 
@@ -40,28 +39,24 @@ function atualizar_filtro(filtros) {
 }
 
 async function pegar_produtos() {
-    fetch('http://127.0.0.1:5000/pegar_produtos')
+    await fetch('http://127.0.0.1:5000/pegar_produtos')
     
         .then(response => response.json())
     
         .then(data => {
             produtos = data.produtos
-            console.log(produtos)
-            pegou_produtos = true
         })
     
         .catch(error => console.log(error));
 }
 
 function mostrar_produtos(produtos) {
-    console.log("oi")
-    console.log(produtos)
-    let div_produtos_mostrar = document.getElementById("produtos2")
+    let div_produtos_mostrar = document.getElementById("produtos")
     produtos.forEach(produto => {
-        console.log(produto)
+        console.log("teste", produto.img)
         div_produtos_mostrar.innerHTML += `
         <div class="card" style="width: 18rem">
-            <img src="{{ url_for('static', filename='img/produtos/' + ${produto.img}) }}" class="card-img-top" alt="...">
+            <img src="static/img/produtos/${produto.img}" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">${produto.name}</h5>
                 <p class="card-text">

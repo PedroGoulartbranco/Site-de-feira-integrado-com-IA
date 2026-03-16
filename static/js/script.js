@@ -77,7 +77,10 @@ function mostrar_produtos(produtos) {
         })
     } else {
         produtos_filtrados = produtos.filter(produto => {
-            return produto.filtros.some(filtro => filtros.includes(filtro))
+            produto_esta_no_filtro = produto.filtros.some(filtro => filtros.includes(filtro));
+            produto_esta_no_atributos = produto.atributos.some(atributo => atributos.includes(atributo));
+
+            return produto_esta_no_filtro && produto_esta_no_atributos
         })
         console.log(produtos_filtrados)
         produtos_filtrados.forEach(produto => {

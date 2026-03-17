@@ -20,6 +20,17 @@ body {
 .card:hover img {
     transform: scale(1.1);
 }
+
+.imagem {
+    width: 286px;
+    height: 200px;
+    transition: transform 0.3s ease;
+}
+
+.imagem:hover {
+    transform: scale(1.1);
+}
+
 h1 {
     text-align: center;
 }

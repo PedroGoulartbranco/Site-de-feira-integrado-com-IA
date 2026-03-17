@@ -6,7 +6,8 @@
     "filtros": ["cama", "cama casal"], 
     "atributos": ["montessoriano", "infantil", "seguranca", "lavavel", "impermeavel"],
     "img": "CAMA-CASAL-MONTESSORIANA-LISA.png",
-    "descricao_IA": "Cama infantil de estilo montessoriano e minimalista. Focada em autonomia e segurança para bebês e crianças pequenas. Estrutura baixa, estofada com espuma D35 Soft e design clean (cabeceira lisa). Ideal para quem busca decoração acolhedora, moderna e funcional (tecido repelente a líquidos e capa lavável). Vibe: segura, independente, prática, higiênica e elegante. Palavras-chave: quarto de bebê, transição berço, infantil, macio, fácil de limpar, proteção, design europeu."
+    "descricao_IA": "Cama infantil de estilo montessoriano e minimalista. Focada em autonomia e segurança para bebês e crianças pequenas. Estrutura baixa, estofada com espuma D35 Soft e design clean (cabeceira lisa). Ideal para quem busca decoração acolhedora, moderna e funcional (tecido repelente a líquidos e capa lavável). Vibe: segura, independente, prática, higiênica e elegante. Palavras-chave: quarto de bebê, transição berço, infantil, macio, fácil de limpar, proteção, design europeu.",
+    "descricao_Front": "A Cama Montessoriana Lisa Bell’Baby traduz o poder do essencial: linhas limpas, formas suaves e um design que prioriza autonomia, conforto e segurança."
     },
      {
     "id": "002",
@@ -15,7 +16,8 @@
     "filtros": ["sofa"],
     "atributos": ["brinquedo", "infantil", "montessoriano", "lavavel", "impermeavel", "seguranca"],
     "img": "SOFA-DE-BRINCAR-PLICO.png",
-    "descricao_IA": "Sofá modular infantil e lúdico com design multifuncional. Transforma-se em cabana, escorregador, túnel ou cama de soneca. Estrutura leve e firme com espuma D35 Soft, ideal para brinquedotecas e quartos infantis. Vibe: criativa, interativa, montessoriana e dinâmica. Focado em brincar livre e desenvolvimento motor. Tecido repelente a líquidos, atóxico e lavável. Palavras-chave: diversão, modular, interativo, aventura, fácil de montar, seguro para crianças, resistente."
+    "descricao_IA": "Sofá modular infantil e lúdico com design multifuncional. Transforma-se em cabana, escorregador, túnel ou cama de soneca. Estrutura leve e firme com espuma D35 Soft, ideal para brinquedotecas e quartos infantis. Vibe: criativa, interativa, montessoriana e dinâmica. Focado em brincar livre e desenvolvimento motor. Tecido repelente a líquidos, atóxico e lavável. Palavras-chave: diversão, modular, interativo, aventura, fácil de montar, seguro para crianças, resistente.",
+    "descricao_Front": "O Sofá de Brincar Plico Bell’Baby foi criado para transformar o quarto ou a brinquedoteca em um espaço vivo, cheio de possibilidades. Feito com módulos leves, firmes e seguros, ele pode ser desmontado, empilhado e reconstruído quantas vezes a imaginação permitir."
     },
      {
     "id": "003",
@@ -24,7 +26,8 @@
     "filtros": ["poltrona"],
     "atributos": ["infantil", "seguranca", "lavavel", "impermeavel"],
     "img": "POLTRONA-TULA-INFANTIL.png",
-    "descricao_IA": "Poltrona infantil ergonômica com design atemporal e elegante. Focada em momentos de baixa energia: leitura, descanso e relaxamento. Estrutura segura com bordas arredondadas (sem quinas) e espuma D35 Soft de alta durabilidade. Ideal para criar um 'cantinho da leitura' ou um espaço de calma no quarto infantil. Vibe: aconchegante, tranquila, ergonômica e sofisticada. Tecido repelente a líquidos e totalmente lavável. Palavras-chave: leitura, relaxar, descanso, apoio lombar, poltrona de quarto, móvel seguro, durável."
+    "descricao_IA": "Poltrona infantil ergonômica com design atemporal e elegante. Focada em momentos de baixa energia: leitura, descanso e relaxamento. Estrutura segura com bordas arredondadas (sem quinas) e espuma D35 Soft de alta durabilidade. Ideal para criar um 'cantinho da leitura' ou um espaço de calma no quarto infantil. Vibe: aconchegante, tranquila, ergonômica e sofisticada. Tecido repelente a líquidos e totalmente lavável. Palavras-chave: leitura, relaxar, descanso, apoio lombar, poltrona de quarto, móvel seguro, durável.",
+    "descricao_Front": "A Poltrona Tula Bell’Baby foi criada para acompanhar os momentos tranquilos das crianças — ler, descansar, imaginar ou apenas estar no próprio cantinho."
     },
     {
     "id": "004",
@@ -33,7 +36,8 @@
     "filtros": ["travesseiro"],
     "atributos": ["infantil", "seguranca", "antialergico"],
     "img": "TRAVESSEIRO-INFANTIL.png",
-    "descricao_IA": "Travesseiro infantil premium em látex 100% natural com suporte progressivo. Focado em saúde do sono e segurança extrema (antissufocante e respirável). Altamente higiênico: naturalmente hipoalergênico, resistente a ácaros e com proteção antiviral/antibacteriana (Zinco). Vibe: saudável, tecnológico, seguro e fresco (conforto térmico). Ideal para crianças com alergias ou pais que buscam o melhor suporte cervical. Palavras-chave: sono profundo, antibacteriano, látex belga, sem alergia, respirável, refrescante, ortopédico infantil."
+    "descricao_IA": "Travesseiro infantil premium em látex 100% natural com suporte progressivo. Focado em saúde do sono e segurança extrema (antissufocante e respirável). Altamente higiênico: naturalmente hipoalergênico, resistente a ácaros e com proteção antiviral/antibacteriana (Zinco). Vibe: saudável, tecnológico, seguro e fresco (conforto térmico). Ideal para crianças com alergias ou pais que buscam o melhor suporte cervical. Palavras-chave: sono profundo, antibacteriano, látex belga, sem alergia, respirável, refrescante, ortopédico infantil.",
+    "descricao_Front": "O Travesseiro Infantil Bell’Baby é feito com látex 100% natural de altíssima qualidade, garantindo conforto macio e ajustável ao formato da cabeça. Seu suporte progressivo acompanha o crescimento da criança, proporcionando noites tranquilas e um sono saudável."
     },
     {
     "id": "005",
@@ -42,7 +46,8 @@
     "filtros": ["colchao"],
     "atributos": ["infantil", "impermeavel", "antialergico"],
     "img": "COLCHAO-LATEX-INFANTIL.png",
-    "descricao_IA": "Colchão infantil de alta performance com 15cm de látex natural D65. Foco total em suporte ortopédico, higiene e longevidade. Possui tripla proteção: antiviral, antibacteriana e antifúngica, além de ser 100% impermeável (proteção contra vazamentos/xixi). Vibe: premium, higiênica, tecnológica e sustentável. Ideal para pais que buscam um colchão que dure todo o crescimento da criança sem acumular ácaros ou odores. Palavras-chave: impermeável, suporte firme, látex belga, fácil de limpar, durável, sono saudável, ecológico."
+    "descricao_IA": "Colchão infantil de alta performance com 15cm de látex natural D65. Foco total em suporte ortopédico, higiene e longevidade. Possui tripla proteção: antiviral, antibacteriana e antifúngica, além de ser 100% impermeável (proteção contra vazamentos/xixi). Vibe: premium, higiênica, tecnológica e sustentável. Ideal para pais que buscam um colchão que dure todo o crescimento da criança sem acumular ácaros ou odores. Palavras-chave: impermeável, suporte firme, látex belga, fácil de limpar, durável, sono saudável, ecológico.",
+    "descricao_Front": "O Colchão Infantil Bell’Baby foi criado para oferecer às crianças um sono seguro, saudável e cheio de conforto. Produzido com o mesmo cuidado que inspirou toda a linha Bell’Baby."
     },
     {
     "id": "006",
@@ -51,6 +56,7 @@
     "filtros": ["acessorio", "sofa"],
     "atributos": ["lavavel", "impermeavel", "brinquedo", "infantil"],
     "img": "CAPA-AVULSA-SOFA-DE-BRINCAR-PLICO.png",
-    "descricao_IA": "Acessório de reposição e manutenção para o Sofá Plico. Foco em praticidade, higiene e renovação do ambiente. Permite trocar a cor do móvel ou garantir o uso do sofá enquanto a outra capa está lavando. Vibe: prática, organizada, versátil e durável. Possui tecido repelente a líquidos e zíper funcional. Ideal para quem já possui o sofá e busca conveniência. Palavras-chave: capa extra, trocar cor, reposição, fácil de lavar, manutenção, durabilidade, organização."
+    "descricao_IA": "Acessório de reposição e manutenção para o Sofá Plico. Foco em praticidade, higiene e renovação do ambiente. Permite trocar a cor do móvel ou garantir o uso do sofá enquanto a outra capa está lavando. Vibe: prática, organizada, versátil e durável. Possui tecido repelente a líquidos e zíper funcional. Ideal para quem já possui o sofá e busca conveniência. Palavras-chave: capa extra, trocar cor, reposição, fácil de lavar, manutenção, durabilidade, organização.",
+    "descricao_Front": "A Capa Avulsa do Sofá de Brincar Plico Bell’Baby foi criada para trazer praticidade para a rotina e manter o seu Plico sempre impecável."
     }
 ]

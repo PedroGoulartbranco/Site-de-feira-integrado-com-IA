@@ -150,6 +150,15 @@ function remover(nome) {
     if (atributos.includes(nome)) {
       atributos = atributos.filter((atributo) => atributo != nome);
     }
+    if (nomes.includes(nome)) {
+      nomes = ["nenhum"]
+    }
+    if (filtros.length == 0) {
+      filtros = ["nenhum"]
+    } 
+    if (atributos.length == 0) {
+      atributos = ["nenhum"]
+    }
     console.log(filtros);
     atualizar_pagina();
   }

@@ -132,7 +132,7 @@ function mostrar_produtos(produtos) {
                     <p class="fw-bold fs-5 mb-2">
                         R$ ${produto.price}
                     </p>
-                    <a href="#" class="btn btn-primary w-100" onclick="adicionar_no_carrinho('${produto.id}')">Adicionar no Carrinho</a>
+                    <a href="#" class="btn btn-primary w-100" onclick="abrir_barra_adicionar_produto('${produto.id}')">Adicionar no Carrinho</a>
                 </div>
             </div>
         </div>

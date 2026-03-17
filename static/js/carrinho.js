@@ -100,6 +100,7 @@ function ver_carrinho() {
         <p> Nenhum Produto Adicionado</p>
         `
     } else {
+        let texto_para_zap = ``
         produtos_no_carrinho.forEach(produto => {
             let preco_total_produto = parseFloat(produto.preco) * parseInt(produto.quantidade)
             total_venda += preco_total_produto
@@ -109,9 +110,12 @@ function ver_carrinho() {
             Preço Unitário: ${produto.preco}<br>
             Preço Total: R$${preco_total_produto}</p>
             `
+            texto_para_zap += `%0Nome: ${produto.nome}%0AQuantidade: ${produto.quantidade}%0APreço Unitário: ${produto.preco}%0APreço Total: R$${preco_total_produto}`
         })
+        texto_para_zap += `%0AValor Total: R$${total_venda.toFixed(4)}`
         barra_lateral.innerHTML += `
         <h5>Valor Total: R$${total_venda.toFixed(4)}</h5>
+         <a href="https://wa.me/?text=${texto_para_zap}"" class="btn btn-success w-100">Mandar Para Whatsapp</a>
         `
     }
 }

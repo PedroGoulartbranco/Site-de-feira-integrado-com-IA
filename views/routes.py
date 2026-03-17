@@ -8,10 +8,11 @@ filtros_somente= []
 atributos_somente = []
 nomes_somente = []
 
+with open("data/produtos.json", encoding="utf-8") as pro:
+        produtos = json.load(pro)
+
 @views_bp.route("/")
 def home():
-    with open("data/produtos.json", encoding="utf-8") as pro:
-        produtos = json.load(pro)
     return render_template("catalogo.html",produtos=produtos)
 
 @views_bp.route("/pesquisar", methods=['GET', 'POST'])
@@ -44,6 +45,4 @@ def pesquisar():
 
 @views_bp.route("/pegar_produtos", methods=['GET'])
 def mandar_produtos():
-    with open("data/produtos.json", encoding="utf-8") as pro:
-        produtos = json.load(pro)
     return jsonify({"produtos": produtos})

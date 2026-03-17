@@ -116,7 +116,6 @@ function mostrar_produtos(produtos) {
       });
     }
   }
-  console.log("produtos", produtos_filtrados)
   produtos_filtrados.forEach((produto) => {
       div_produtos_mostrar.innerHTML += `
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center p-2">
@@ -133,7 +132,7 @@ function mostrar_produtos(produtos) {
                     <p class="fw-bold fs-5 mb-2">
                         R$ ${produto.price}
                     </p>
-                    <a href="#" class="btn btn-primary w-100">Adicionar no Carrinho</a>
+                    <a href="#" class="btn btn-primary w-100" onclick="adicionar_no_carrinho('${produto.id}')">Adicionar no Carrinho</a>
                 </div>
             </div>
         </div>
@@ -159,7 +158,6 @@ function remover(nome) {
     if (atributos.length == 0) {
       atributos = ["nenhum"]
     }
-    console.log(filtros);
     atualizar_pagina();
   }
 }

@@ -88,6 +88,7 @@ function contar_quantidade_no_carrinho(nome_produto) {
 }
 
 function ver_carrinho() {
+    let total_venda = 0
     barra_lateral.classList.toggle("ativa")
     overlay.classList.toggle("ativa")
     barra_lateral.innerHTML = `
@@ -101,6 +102,7 @@ function ver_carrinho() {
     } else {
         produtos_no_carrinho.forEach(produto => {
             let preco_total_produto = parseFloat(produto.preco) * parseInt(produto.quantidade)
+            total_venda += preco_total_produto
             barra_lateral.innerHTML += `
             <p>Nome: ${produto.nome}<br>
             Quantidade: ${produto.quantidade}<br>
@@ -108,6 +110,9 @@ function ver_carrinho() {
             Preço Total: R$${preco_total_produto}</p>
             `
         })
+        barra_lateral.innerHTML += `
+        <h5>Valor Total: R$${total_venda.toFixed(4)}</h5>
+        `
     }
 }
 

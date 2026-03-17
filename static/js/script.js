@@ -24,7 +24,7 @@ botao_pesquisar.addEventListener("click", function (event) {
     .then((response) => response.json())
 
     .then((data) => {
-      atualizar_filtro(data.filtros, data.atributos);
+      atualizar_filtro(data.filtros, data.atributos, data.nomes);
       filtros = data.filtros;
       atributos = data.atributos;
       nomes = data.nomes;
@@ -35,8 +35,7 @@ botao_pesquisar.addEventListener("click", function (event) {
     .catch((error) => console.log(error));
 });
 
-function atualizar_filtro(filtros, atributos) {
-  mostrar_filtros.innerHTML = `${filtros} | ${atributos}`;
+function atualizar_filtro(filtros, atributos, nomes) {
   div_mostrar_filtros.innerHTML = ``;
   filtros.forEach((filtro) => {
     div_mostrar_filtros.innerHTML += `
@@ -46,6 +45,11 @@ function atualizar_filtro(filtros, atributos) {
   atributos.forEach((atributo) => {
     div_mostrar_filtros.innerHTML += `
             <button type="button" class="botao-filtro"" onclick="remover('${atributo}')">${atributo}</button>
+    `;
+  });
+  nomes.forEach((nome) => {
+    div_mostrar_filtros.innerHTML += `
+            <button type="button" class="botao-filtro"" onclick="remover('${nome}')">${nome}</button>
     `;
   });
 }
@@ -152,7 +156,7 @@ function remover(nome) {
 }
 
 async function atualizar_pagina() {
-  atualizar_filtro(filtros, atributos);
+  atualizar_filtro(filtros, atributos, nomes);
   await pegar_produtos();
   mostrar_produtos(produtos);
 }

@@ -74,3 +74,18 @@ h1 {
 .barra-lateral-produto.ativa {
     right: 0px;
 }
+
+#overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100vw; 
+    height: 100vh; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 998; 
+    display: none; 
+}
+
+#overlay.ativa {
+    display: block;
+}

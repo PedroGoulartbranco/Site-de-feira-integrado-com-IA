@@ -6,37 +6,46 @@ let quantidade = 1;
 let lista_nomes_dos_produtos_carrinho = []
 
 function abrir_barra_adicionar_produto(id_produto) {
-    quantidade = 1;
     produtos.forEach(produto => {
         if (produto.id == id_produto) {
             produto_atual = produto;
         }
     })
+    quantidade = 1;
     barra_lateral_adicionar_produto.innerHTML = `
     <h2>Adicionar Produto</h2>
     <p>${produto_atual.name}</p>
-    <img src="static/img/produtos/${produto_atual.img}" class="imagem" alt="${produto_atual.name}"  object-fit: contain;">
+    <img src="static/img/produtos/${produto_atual.img}" class="imagem" alt="${produto_atual.name}" style="object-fit: contain; width: 100%; height: 200px;">
     <p>Preço: R$${produto_atual.price}</p>
     <p>${produto_atual.descricao_Front}</p>
-    <p>No Carrinho: </p>
-    <span>
-        <button type="button" class="btn btn-secondary" onclick="aumentar_diminuir_quantidade('+')">+</button>
-        <h3 id="onde_mostra_quantidade">${quantidade}</h3>
-        <button type="button" class="btn btn-secondary" onclick="aumentar_diminuir_quantidade('-')">-</button>
-    </span>
+    
+    <p>Quantidade no Carrinho: ${contar_quantidade_no_carrinho(produto_atual.name)}</p>
+    <div class="d-flex align-items-center justify-content-center mb-3">
+        <button type="button" class="btn btn-secondary mx-2" onclick="aumentar_diminuir_quantidade('-', '${produto_atual.name}')">-</button>
+        <h3 id="onde_mostra_quantidade" class="mb-0">${quantidade}</h3>
+        <button type="button" class="btn btn-secondary mx-2" onclick="aumentar_diminuir_quantidade('+', '${produto_atual.name}')">+</button>
+    </div>
+
     <a href="#" class="btn btn-primary w-100" onclick="adicionar_carrinho('${produto_atual.name}')">Finalizar</a>
-    `
+`;
 
     barra_lateral_adicionar_produto.classList.toggle("ativa")
     overlay.classList.toggle("ativa")
 }
 
-function aumentar_diminuir_quantidade(sinal) {
+function aumentar_diminuir_quantidade(sinal, nome_produto) {
+    let indice = produtos_no_carrinho.findIndex(pedido => pedido.nome == nome_produto)
     if (sinal == "+") {
         quantidade += 1
     } else {
-        if (quantidade > 0) {
+        if (indice == -1) {
+            if (quantidade > 0) {
             quantidade -= 1
+        }
+        } else {
+            if (quantidade + produtos_no_carrinho[indice].quantidade > 0) {
+                quantidade -= 1
+            }
         }
     }
     h3_mostrar_quantidade = document.getElementById("onde_mostra_quantidade")
@@ -44,33 +53,31 @@ function aumentar_diminuir_quantidade(sinal) {
 }
 
 function adicionar_carrinho(nome_produto) {
-    if (produtos_no_carrinho.length == 0) {
+    if (produtos_no_carrinho.length == 0 ||  !lista_nomes_dos_produtos_carrinho.includes(nome_produto)) {
         produtos_no_carrinho.push({
             "nome": nome_produto,
             "quantidade": quantidade
         })
         lista_nomes_dos_produtos_carrinho.push(nome_produto)
     } else {
-        if (!lista_nomes_dos_produtos_carrinho.includes(nome_produto)) {
-            produtos_no_carrinho.push({
-                "nome": nome_produto,
-                "quantidade": quantidade
-            })
-        } else {
             let indice = produtos_no_carrinho.findIndex(pedido => pedido.nome == nome_produto)
+            quantidade = produtos_no_carrinho[indice].quantidade + (quantidade)
             produtos_no_carrinho[indice] = {
                 "nome": nome_produto,
                 "quantidade": quantidade
-            }
         }
     }
 
-    console.log(produtos_no_carrinho)
+    fechar_barras_laterais()
 }
 
-function contar_quantidade_no_carrinho(id_produto) {
-    let total = 0;
-
+function contar_quantidade_no_carrinho(nome_produto) {
+    let indice = produtos_no_carrinho.findIndex(pedido => pedido.nome == nome_produto)
+    if (indice == -1) {
+        return 0;
+    } else {
+        return produtos_no_carrinho[indice].quantidade
+    }
 }
 
 function fechar_barras_laterais() {

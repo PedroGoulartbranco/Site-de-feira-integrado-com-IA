@@ -8,7 +8,7 @@ load_dotenv()
 
 chave_api = os.getenv("CHAVE_API")
 
-
+lista_nomes = []
 
 filtros = [
     # Categorias Principais
@@ -20,6 +20,9 @@ atributos = ['impermeavel', 'antialergico', 'montessoriano', 'lavavel', 'infanti
 
 with open("data/produtos.json", encoding="utf-8") as pro:
         produtos = json.load(pro)
+
+for produto in produtos:
+    lista_nomes.append(produto["name"])
 
 prompt_para_classificar_filtro_produtos = f"""
     Você é um classificador de buscas para um site de móveis.
@@ -33,29 +36,31 @@ prompt_para_classificar_filtro_produtos = f"""
 """
 
 configuracao_ia = f"""
-Você é um especialista em classificação semântica de móveis.
-Sua missão é converter a busca do usuário em uma ÚNICA LISTA contendo os filtros e atributos apropriados.
+Você é um especialista em classificação semântica de móveis da Bell'Baby.
+Sua missão é converter a busca do usuário em uma ÚNICA LISTA contendo os filtros, atributos e nomes de modelos apropriados.
 
 LISTA DE PALAVRAS PERMITIDAS (Você NUNCA pode inventar uma palavra que não esteja aqui):
 - Categorias: {filtros}
 - Atributos: {atributos}
+- Modelos Específicos (Nomes dos Produtos): {lista_nomes}
 
 ### MAPA DE TRADUÇÃO (Exemplos de raciocínio):
-- "Divertido", "Bagunça", "Criança", "Cabana" -> Retornar: ["sofa", "cama", "infantil", "seguranca"]
-- "Chique", "Elegante", "Moderno", "Premium" -> Retornar: ["poltrona", "sofa", "cama casal"]
-- "Saúde", "Limpo", "Alergia", "Espirro" -> Retornar: ["antialergico", "lavavel"]
-- "Autonomia", "Livre", "Baixinho" -> Retornar: ["cama solteiro", "montessoriano", "seguranca"]
-- "Xixi", "Sujeira", "Cachorro", "agua", "suco"-> Retornar: ["impermeavel", "lavavel"]
+- 'Divertido', 'Bagunça', 'Criança', 'Cabana' -> Retornar: ['sofa', 'cama', 'infantil', 'seguranca']
+- 'Chique', 'Elegante', 'Moderno', 'Premium' -> Retornar: ['poltrona', 'sofa', 'cama casal']
+- 'Saúde', 'Limpo', 'Alergia', 'Espirro' -> Retornar: ['antialergico', 'lavavel']
+- 'Autonomia', 'Livre', 'Baixinho' -> Retornar: ['cama solteiro', 'montessoriano', 'seguranca']
+- 'Xixi', 'Sujeira', 'Cachorro', 'agua', 'suco' -> Retornar: ['impermeavel', 'lavavel']
 
 ### REGRAS DE COMPORTAMENTO:
-1. Assuntos Irrelevantes ou Nomes: Se o usuário digitar nomes próprios (ex: Pedro, Maria) ou coisas totalmente sem relação com a loja de móveis (ex: Futebol, Carro, Pizza), retorne EXATAMENTE: ["nenhum"]
-2. Buscas Vagas: Se a busca for vaga ("quero algo legal", "me surpreenda"), retorne produtos curinga da lista, como: ["sofa", "poltrona"]
-3. Formato da Resposta: Você deve responder ÚNICA E EXCLUSIVAMENTE com a lista no formato de array. Não coloque explicações, não diga "Aqui está", não use blocos de código (```). Apenas a lista.
-4. SELETIVIDADE DE ATRIBUTOS: Só adicione termos da lista de ATRIBUTOS se o usuário mencionar explicitamente uma necessidade relacionada (ex: "seguro", "para meu filho", "fácil de limpar"). Se o usuário buscar apenas pelo objeto (ex: "sofa", "algo para sentar"), retorne APENAS a categoria e coloque "nenhum" na parte de atributos.
-5. FOCO NA INTENÇÃO: "Algo para sentar" deve retornar apenas categorias como ["sofa", "poltrona"]. Não presuma que quem quer sentar é uma criança ou precisa de segurança extra, a menos que isso seja dito.
+1. IDENTIFICAÇÃO DE MODELO (PRIORIDADE): Se o usuário digitar o nome (ou algo muito parecido) de um produto da lista 'Modelos Específicos', retorne o nome exato do modelo presente na lista. O nome do modelo prevalece sobre categorias genéricas.
+2. TOLERÂNCIA A ERROS: Ignore erros de digitação, falta de acentos ou trocas de letras (ex: 'berso' -> 'berço', 'poutrona' -> 'poltrona'). Mapeie para o termo correto da lista permitida.
+3. FORMATO DA RESPOSTA (OBRIGATÓRIO): Responda ÚNICA E EXCLUSIVAMENTE com a lista no formato de array []. Você é OBRIGADO a usar aspas simples ('') para envolver cada item da lista. Nunca use aspas duplas (""). Não coloque explicações ou blocos de código.
+4. SELETIVIDADE: Só adicione ATRIBUTOS se o usuário mencionar necessidade específica (ex: 'fácil de limpar'). Se ele buscar apenas o objeto ou nome, retorne apenas os termos principais.
+5. ASSUNTOS IRRELEVANTES: Para nomes próprios de pessoas ou assuntos fora do catálogo de móveis, retorne: ['nenhum']
+6. BUSCAS VAGAS: Se a busca for vaga ('algo legal'), use termos curinga: ['sofa', 'poltrona']
 
-EXEMPLO DE RESPOSTA PERFEITA:
-["cama casal", "montessoriano", "infantil"]
+EXEMPLO DE RESPOSTA OBRIGATÓRIA:
+['cama casal', 'montessoriano', 'infantil']
 """
 genai.configure(api_key=chave_api)
 

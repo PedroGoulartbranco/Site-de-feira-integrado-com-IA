@@ -4,6 +4,7 @@ let filtros = ["nenhum"];
 let atributos = ["nenhum"];
 let mostrar_filtros = document.getElementById("filtros");
 let produtos = [];
+let nomes = ["nenhum"];
 let div_mostrar_filtros = document.getElementById("mostrar_filtros");
 
 mostrar_filtros.innerHTML = filtros; //Limpa os filtros
@@ -26,6 +27,8 @@ botao_pesquisar.addEventListener("click", function (event) {
       atualizar_filtro(data.filtros, data.atributos);
       filtros = data.filtros;
       atributos = data.atributos;
+      nomes = data.nomes;
+      console.log(nomes)
       mostrar_produtos(produtos);
     })
 
@@ -44,7 +47,7 @@ function atualizar_filtro(filtros, atributos) {
     div_mostrar_filtros.innerHTML += `
             <button type="button" class="botao-filtro"" onclick="remover('${atributo}')">${atributo}</button>
     `
-  })
+  });
 }
 
 async function pegar_produtos() {
@@ -64,6 +67,7 @@ function mostrar_produtos(produtos) {
   let produtos_filtrados = [];
   let produto_esta_no_atributos = false;
   let produto_esta_no_filtro = false;
+  let produto_esta_no_nome = false;
 
   if (filtros.includes("nenhum")) {
     if (atributos.includes("nenhum")) {
@@ -94,7 +98,16 @@ function mostrar_produtos(produtos) {
             </div>
         </div>`;
     });
-  } else {
+  } else if (!nomes.includes("nenhum")) {
+      produtos_filtrados = produtos.filter((produto) => {
+        produto_esta_no_nome = produto.name.some((nome) =>
+          nomes.includes(nome),
+        );
+
+        return produto_esta_no_nome;
+      });
+  } 
+  else {
     if (atributos.includes("nenhum")) {
       produtos_filtrados = produtos.filter((produto) => {
         produto_esta_no_filtro = produto.filtros.some((filtro) =>

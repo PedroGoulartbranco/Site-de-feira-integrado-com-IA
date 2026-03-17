@@ -69,7 +69,15 @@ function mostrar_produtos(produtos) {
   let produto_esta_no_filtro = false;
   let produto_esta_no_nome = false;
 
-  if (filtros.includes("nenhum")) {
+  if (!nomes.includes("nenhum")) {
+    produtos_filtrados = produtos.filter((produto) => {
+      produto_esta_no_nome = nomes.some(nome => {
+        return produto.name.includes(nome)
+      }
+    );
+    return produto_esta_no_nome;
+    });
+  } else if (filtros.includes("nenhum")) {
     if (atributos.includes("nenhum")) {
       produtos.forEach((produto) => {
         produtos_filtrados.push(produto);
@@ -82,34 +90,6 @@ function mostrar_produtos(produtos) {
         return produto_esta_no_atributos;
       });
     }
-    produtos_filtrados.forEach((produto) => {
-      div_produtos_mostrar.innerHTML += `
-      <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center p-2">
-        <div class="card h-100 w-100 shadow-sm"> 
-            <img src="static/img/produtos/${produto.img}" class="card-img-top p-3" alt="${produto.name}" style="height: 200px; object-fit: contain;">
-            
-            <div class="card-body d-flex flex-column">
-                <h5 class="card-title h6 fw-bold" style="min-height: 2.5rem;">${produto.name}</h5>
-                <p class="card-text small text-muted mb-2">
-                    Filtros: ${produto.filtros}<br>
-                    Atributos: ${produto.atributos}
-                </p>
-                <div class="mt-auto">
-                    <p class="fw-bold fs-5 mb-2">
-                        R$ ${produto.price}
-                    </p>
-                    <a href="#" class="btn btn-primary w-100">Adicionar no Carrinho</a>
-                </div>
-            </div>
-        </div>
-    </div>`;
-    });
-  } else if (!nomes.includes("nenhum")) {
-    produtos_filtrados = produtos.filter((produto) => {
-      produto_esta_no_nome = produto.name.some((nome) => nomes.includes(nome));
-
-      return produto_esta_no_nome;
-    });
   } else {
     if (atributos.includes("nenhum")) {
       produtos_filtrados = produtos.filter((produto) => {
@@ -131,30 +111,30 @@ function mostrar_produtos(produtos) {
         return produto_esta_no_filtro && produto_esta_no_atributos;
       });
     }
-    console.log(produtos_filtrados);
-    produtos_filtrados.forEach((produto) => {
-      div_produtos_mostrar.innerHTML += `
-       <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center p-2">
-      <div class="card h-100 w-100 shadow-sm"> 
-          <img src="static/img/produtos/${produto.img}" class="card-img-top p-3" alt="${produto.name}" style="height: 200px; object-fit: contain;">
-          
-          <div class="card-body d-flex flex-column">
-              <h5 class="card-title h6 fw-bold" style="min-height: 2.5rem;">${produto.name}</h5>
-              <p class="card-text small text-muted mb-2">
-                  Filtros: ${produto.filtros}<br>
-                  Atributos: ${produto.atributos}
-              </p>
-              <div class="mt-auto">
-                  <p class="fw-bold fs-5 mb-2">
-                      R$ ${produto.price}
-                  </p>
-                  <a href="#" class="btn btn-primary w-100">Adicionar no Carrinho</a>
-              </div>
-          </div>
-      </div>
-  </div>`;
-    });
   }
+  console.log("produtos", produtos_filtrados)
+  produtos_filtrados.forEach((produto) => {
+      div_produtos_mostrar.innerHTML += `
+      <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center p-2">
+        <div class="card h-100 w-100 shadow-sm"> 
+            <img src="static/img/produtos/${produto.img}" class="card-img-top p-3" alt="${produto.name}" style="height: 200px; object-fit: contain;">
+            
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title h6 fw-bold" style="min-height: 2.5rem;">${produto.name}</h5>
+                <p class="card-text small text-muted mb-2">
+                    Filtros: ${produto.filtros}<br>
+                    Atributos: ${produto.atributos}
+                </p>
+                <div class="mt-auto">
+                    <p class="fw-bold fs-5 mb-2">
+                        R$ ${produto.price}
+                    </p>
+                    <a href="#" class="btn btn-primary w-100">Adicionar no Carrinho</a>
+                </div>
+            </div>
+        </div>
+    </div>`;
+    });
 }
 
 function remover(nome) {

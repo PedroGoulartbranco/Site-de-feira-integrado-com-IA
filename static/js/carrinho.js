@@ -1,5 +1,5 @@
 let produtos_no_carrinho = []
-let barra_lateral_adicionar_produto = document.getElementById("barra_lateral_adicionar_produto")
+let barra_lateral = document.getElementById("barra_lateral")
 let overlay = document.getElementById("overlay")
 let produto_atual = []
 let quantidade = 1;
@@ -12,7 +12,7 @@ function abrir_barra_adicionar_produto(id_produto) {
         }
     })
     quantidade = 1;
-    barra_lateral_adicionar_produto.innerHTML = `
+    barra_lateral.innerHTML = `
     <h2>Adicionar Produto</h2>
     <p>${produto_atual.name}</p>
     <img src="static/img/produtos/${produto_atual.img}" class="imagem" alt="${produto_atual.name}" style="object-fit: contain; width: 100%; height: 200px;">
@@ -29,7 +29,7 @@ function abrir_barra_adicionar_produto(id_produto) {
     <a href="#" class="btn btn-primary w-100" onclick="adicionar_carrinho('${produto_atual.name}')">Finalizar</a>
 `;
 
-    barra_lateral_adicionar_produto.classList.toggle("ativa")
+    barra_lateral.classList.toggle("ativa")
     overlay.classList.toggle("ativa")
 }
 
@@ -40,8 +40,8 @@ function aumentar_diminuir_quantidade(sinal, nome_produto) {
     } else {
         if (indice == -1) {
             if (quantidade > 0) {
-            quantidade -= 1
-        }
+                quantidade -= 1
+            }
         } else {
             if (quantidade + produtos_no_carrinho[indice].quantidade > 0) {
                 quantidade -= 1
@@ -53,18 +53,25 @@ function aumentar_diminuir_quantidade(sinal, nome_produto) {
 }
 
 function adicionar_carrinho(nome_produto) {
-    if (produtos_no_carrinho.length == 0 ||  !lista_nomes_dos_produtos_carrinho.includes(nome_produto)) {
+    produtos.forEach(produto => {
+        if (produto.name == nome_produto) {
+            produto_atual = produto;
+        }
+    })
+    if (produtos_no_carrinho.length == 0 || !lista_nomes_dos_produtos_carrinho.includes(nome_produto)) {
         produtos_no_carrinho.push({
             "nome": nome_produto,
-            "quantidade": quantidade
+            "quantidade": quantidade,
+            "preco": produto_atual.price
         })
         lista_nomes_dos_produtos_carrinho.push(nome_produto)
     } else {
-            let indice = produtos_no_carrinho.findIndex(pedido => pedido.nome == nome_produto)
-            quantidade = produtos_no_carrinho[indice].quantidade + (quantidade)
-            produtos_no_carrinho[indice] = {
-                "nome": nome_produto,
-                "quantidade": quantidade
+        let indice = produtos_no_carrinho.findIndex(pedido => pedido.nome == nome_produto)
+        quantidade = produtos_no_carrinho[indice].quantidade + (quantidade)
+        produtos_no_carrinho[indice] = {
+            "nome": nome_produto,
+            "quantidade": quantidade,
+            "preco": produto_atual.price
         }
     }
 
@@ -80,8 +87,32 @@ function contar_quantidade_no_carrinho(nome_produto) {
     }
 }
 
+function ver_carrinho() {
+    barra_lateral.classList.toggle("ativa")
+    overlay.classList.toggle("ativa")
+    barra_lateral.innerHTML = `
+        <h2>Carrinho</h2>
+        <h5> Produtos: </h5>
+    `
+    if (produtos_no_carrinho.length == 0) {
+        barra_lateral.innerHTML += `
+        <p> Nenhum Produto Adicionado</p>
+        `
+    } else {
+        produtos_no_carrinho.forEach(produto => {
+            let preco_total_produto = parseFloat(produto.preco) * parseInt(produto.quantidade)
+            barra_lateral.innerHTML += `
+            <p>Nome: ${produto.nome}<br>
+            Quantidade: ${produto.quantidade}<br>
+            Preço Unitário: ${produto.preco}<br>
+            Preço Total: R$${preco_total_produto}</p>
+            `
+        })
+    }
+}
+
 function fechar_barras_laterais() {
     console.log("fechou")
-    barra_lateral_adicionar_produto.classList.toggle("ativa")
+    barra_lateral.classList.toggle("ativa")
     overlay.classList.toggle("ativa")
 }

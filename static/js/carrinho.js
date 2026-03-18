@@ -16,7 +16,7 @@ function abrir_barra_adicionar_produto(id_produto) {
     barra_lateral.innerHTML = `
     <h2>Adicionar Produto</h2>
     <p>${produto_atual.name}</p>
-    <img src="static/img/produtos/${produto_atual.img}" class="imagem" alt="${produto_atual.name}" style="object-fit: contain; width: 100%; height: 200px;">
+    <img src="{{ url_for('static', filename='img/${produto.img}') }}"  class="imagem" alt="${produto_atual.name}" style="object-fit: contain; width: 100%; height: 200px;">
     <p>Preço: R$${produto_atual.price}</p>
     <p>${produto_atual.descricao_Front}</p>
     

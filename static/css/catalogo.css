@@ -102,8 +102,35 @@ h1 {
     display: block;
 }
 
-
+.div_icone_carrinho {
+    position: fixed; 
+    top: 20px;       
+    left: 20px;      
+    z-index: 1000;   
+    cursor: pointer;
+}
 .div_icone_carrinho img {
     width: 60px;
     height: 60px;
+}
+
+.botao_quantidade {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border-radius: 50%; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    background: #f8f9fa;
+    color: #333;
+    transition: 0.2s;
+}
+
+.botao_quantidade:hover {
+    background: #e2e6ea;
+    transform: scale(1.1);
 }

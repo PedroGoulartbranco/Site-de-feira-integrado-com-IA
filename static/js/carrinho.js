@@ -21,9 +21,9 @@ function abrir_barra_adicionar_produto(id_produto) {
     
     <p>Quantidade no Carrinho: ${contar_quantidade_no_carrinho(produto_atual.name)}</p>
     <div class="d-flex align-items-center justify-content-center mb-3">
-        <button type="button" class="btn btn-secondary mx-2" onclick="aumentar_diminuir_quantidade('-', '${produto_atual.name}')">-</button>
+        <button type="button" class="botao_quantidade" onclick="aumentar_diminuir_quantidade('-', '${produto_atual.name}')">-</button>
         <h3 id="onde_mostra_quantidade" class="mb-0">${quantidade}</h3>
-        <button type="button" class="btn btn-secondary mx-2" onclick="aumentar_diminuir_quantidade('+', '${produto_atual.name}')">+</button>
+        <button type="button" class="botao_quantidade" onclick="aumentar_diminuir_quantidade('+', '${produto_atual.name}')">+</button>
     </div>
 
     <a href="#" class="btn btn-primary w-100" onclick="adicionar_carrinho('${produto_atual.name}')">Finalizar</a>
@@ -87,6 +87,16 @@ function contar_quantidade_no_carrinho(nome_produto) {
     }
 }
 
+function diminuir_quantida_no_carrinho(nome_produto) {
+    let indice = produtos_no_carrinho.findIndex(pedido => pedido.nome == nome_produto)
+    if (produtos_no_carrinho[indice].quantidade > 0) {
+        produtos_no_carrinho[indice].quantidade -= 1
+    }
+    let span_quantidade = document.getElementById("lugar_para_mostrar_quantidade")
+    span_quantidade.innerHTML = `${produtos_no_carrinho[indice].quantidade}`
+    console.log("foii")
+}
+
 function ver_carrinho() {
     let total_venda = 0
     barra_lateral.classList.toggle("ativa")
@@ -106,16 +116,16 @@ function ver_carrinho() {
             total_venda += preco_total_produto
             barra_lateral.innerHTML += `
             <p>Nome: ${produto.nome}<br>
-            Quantidade: ${produto.quantidade}<br>
+            Quantidade: <span id="lugar_para_mostrar_quantidade">${contar_quantidade_no_carrinho(produto.nome)}</span><button type="button" class="botao_quantidade" onclick="diminuir_quantida_no_carrinho('${produto.nome}')">-</button><br>
             Preço Unitário: ${produto.preco}<br>
             Preço Total: R$${preco_total_produto}</p>
             `
-            texto_para_zap += `%0Nome: ${produto.nome}%0AQuantidade: ${produto.quantidade}%0APreço Unitário: ${produto.preco}%0APreço Total: R$${preco_total_produto}`
+            texto_para_zap += `%0ANome: ${produto.nome}%0AQuantidade: ${produto.quantidade}%0APreço Unitário: ${produto.preco}%0APreço Total: R$${preco_total_produto}`
         })
         texto_para_zap += `%0AValor Total: R$${total_venda.toFixed(4)}`
         barra_lateral.innerHTML += `
         <h5>Valor Total: R$${total_venda.toFixed(4)}</h5>
-         <a href="https://wa.me/?text=${texto_para_zap}"" class="btn btn-success w-100">Mandar Para Whatsapp</a>
+         <a href="https://wa.me/?text=${texto_para_zap}"" target="_blank"class="btn btn-success w-100">Mandar Para Whatsapp</a>
         `
     }
 }

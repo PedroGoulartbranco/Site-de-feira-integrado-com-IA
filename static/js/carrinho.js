@@ -4,6 +4,7 @@ let overlay = document.getElementById("overlay")
 let produto_atual = []
 let quantidade = 1;
 let lista_nomes_dos_produtos_carrinho = []
+let total_a_pagar_carrinho = 0
 
 function abrir_barra_adicionar_produto(id_produto) {
     produtos.forEach(produto => {
@@ -62,7 +63,8 @@ function adicionar_carrinho(nome_produto) {
         produtos_no_carrinho.push({
             "nome": nome_produto,
             "quantidade": quantidade,
-            "preco": produto_atual.price
+            "preco": produto_atual.price,
+            "preco_total": quantidade * parseFloat(produto_atual.price)
         })
         lista_nomes_dos_produtos_carrinho.push(nome_produto)
     } else {
@@ -71,7 +73,8 @@ function adicionar_carrinho(nome_produto) {
         produtos_no_carrinho[indice] = {
             "nome": nome_produto,
             "quantidade": quantidade,
-            "preco": produto_atual.price
+            "preco": produto_atual.price,
+            "preco_total": quantidade * parseFloat(produto_atual.price)
         }
     }
 
@@ -91,16 +94,30 @@ function diminuir_quantida_no_carrinho(nome_produto) {
     let indice = produtos_no_carrinho.findIndex(pedido => pedido.nome == nome_produto)
     if (produtos_no_carrinho[indice].quantidade > 0) {
         produtos_no_carrinho[indice].quantidade -= 1
+        if (produtos_no_carrinho[indice].quantidade <= 0) {
+            console.log("apagar")
+            produtos_no_carrinho.splice(indice, 1)
+            ver_carrinho(true)
+            return
+        }
+        ver_carrinho(true)
     }
-    let span_quantidade = document.getElementById("lugar_para_mostrar_quantidade")
-    span_quantidade.innerHTML = `${produtos_no_carrinho[indice].quantidade}`
-    console.log("foii")
 }
 
-function ver_carrinho() {
+function calcular_preco_total_carrinho() {
+    let preco_total_final = 0
+    produtos_no_carrinho.forEach(produto => {
+        preco_total_final += parseFloat(produto.preco_total)
+    })
+    total_a_pagar_carrinho = preco_total_final
+}
+
+function ver_carrinho(atualizar = false) {
+    if (!atualizar) {
+        barra_lateral.classList.toggle("ativa")
+        overlay.classList.toggle("ativa")
+    }
     let total_venda = 0
-    barra_lateral.classList.toggle("ativa")
-    overlay.classList.toggle("ativa")
     barra_lateral.innerHTML = `
         <h2>Carrinho</h2>
         <h5> Produtos: </h5>
@@ -116,7 +133,7 @@ function ver_carrinho() {
             total_venda += preco_total_produto
             barra_lateral.innerHTML += `
             <p>Nome: ${produto.nome}<br>
-            Quantidade: <span id="lugar_para_mostrar_quantidade">${contar_quantidade_no_carrinho(produto.nome)}</span><button type="button" class="botao_quantidade" onclick="diminuir_quantida_no_carrinho('${produto.nome}')">-</button><br>
+            Quantidade: ${produto.quantidade}<button type="button" class="botao_quantidade" onclick="diminuir_quantida_no_carrinho('${produto.nome}')">-</button><br>
             Preço Unitário: ${produto.preco}<br>
             Preço Total: R$${preco_total_produto}</p>
             `
@@ -124,7 +141,7 @@ function ver_carrinho() {
         })
         texto_para_zap += `%0AValor Total: R$${total_venda.toFixed(4)}`
         barra_lateral.innerHTML += `
-        <h5>Valor Total: R$${total_venda.toFixed(4)}</h5>
+        <h5>Valor Total: R$<span id="mostrar_valor_total">${total_venda.toFixed(4)}</span></h5>
          <a href="https://wa.me/?text=${texto_para_zap}"" target="_blank"class="btn btn-success w-100">Mandar Para Whatsapp</a>
         `
     }

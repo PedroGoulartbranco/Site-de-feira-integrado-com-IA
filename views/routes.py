@@ -21,9 +21,7 @@ def pesquisar():
     atributos_somente = []
     nomes_somente = []
     pesquisa = request.json["pesquisa"]
-    print("oi", pesquisa)
     filtros_ia = tranformar_pesquisa_em_filtro(pesquisa)
-    print("filtro", filtros_ia)
     for f in filtros_ia:
         if f in lista_nomes:
             nomes_somente.append(f)
@@ -38,8 +36,6 @@ def pesquisar():
         atributos_somente.append('nenhum')
     if len(nomes_somente) == 0:
         nomes_somente.append('nenhum')
-
-    print(filtros_somente, atributos_somente, nomes_somente)
     
     return jsonify({"filtros": filtros_somente, "atributos": atributos_somente, "nomes": nomes_somente})
 

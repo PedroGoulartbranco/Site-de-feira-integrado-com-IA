@@ -6,11 +6,15 @@ let mostrar_filtros = document.getElementById("filtros");
 let produtos = [];
 let nomes = ["nenhum"];
 let div_mostrar_filtros = document.getElementById("mostrar_filtros");
+let div_mostrar_atualizando_produtos = document.getElementById("carregamento")
+let div_de_produtos_tela = document.getElementById("produtos")
 
 mostrar_filtros.innerHTML = filtros; //Limpa os filtros
 
 botao_pesquisar.addEventListener("click", function (event) {
   event.preventDefault(); //Não recarrega a pagina
+  div_mostrar_atualizando_produtos.style.display = "flex"
+  div_de_produtos_tela.innerHTML = ""
   usuario_digitou = pesquisa.value;
   console.log(usuario_digitou);
 
@@ -55,6 +59,7 @@ function atualizar_filtro(filtros, atributos, nomes) {
 }
 
 async function pegar_produtos() {
+
   await fetch("http://127.0.0.1:5000/pegar_produtos")
     .then((response) => response.json())
 
@@ -116,6 +121,7 @@ function mostrar_produtos(produtos) {
       });
     }
   }
+  div_mostrar_atualizando_produtos.style.display = "none"
   produtos_filtrados.forEach((produto) => {
       div_produtos_mostrar.innerHTML += `
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center p-2">

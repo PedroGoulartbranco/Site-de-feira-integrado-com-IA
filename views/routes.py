@@ -13,7 +13,7 @@ with open("data/produtos.json", encoding="utf-8") as pro:
 
 @views_bp.route("/")
 def home():
-    return render_template("catalogo.html",produtos=produtos)
+    return render_template("index.html",produtos=produtos)
 
 @views_bp.route("/pesquisar", methods=['GET', 'POST'])
 def pesquisar():

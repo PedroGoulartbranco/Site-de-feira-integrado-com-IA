@@ -13,12 +13,13 @@ mostrar_filtros.innerHTML = filtros; //Limpa os filtros
 
 botao_pesquisar.addEventListener("click", function (event) {
   event.preventDefault(); //Não recarrega a pagina
-  div_mostrar_atualizando_produtos.style.display = "flex"
-  div_de_produtos_tela.innerHTML = ""
   usuario_digitou = pesquisa.value;
   console.log(usuario_digitou);
 
-  fetch("http://127.0.0.1:5000/pesquisar", {
+  if (usuario_digitou != "") {
+    div_mostrar_atualizando_produtos.style.display = "flex"
+    div_de_produtos_tela.innerHTML = ""
+    fetch("http://127.0.0.1:5000/pesquisar", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -37,6 +38,8 @@ botao_pesquisar.addEventListener("click", function (event) {
     })
 
     .catch((error) => console.log(error));
+  } 
+
 });
 
 function atualizar_filtro(filtros, atributos, nomes) {

@@ -83,7 +83,6 @@ h1 {
     padding: 20px;
 
     overflow-y: auto;  /*Cria a barra para descer quando ficar grande */    
-   
 }
 
 .barra-lateral.ativa {
@@ -159,4 +158,46 @@ h1 {
 @keyframes giro {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.container-busca {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;              
+    width: 100%;            
+    max-width: 600px;       
+    margin: 20px auto;      
+    padding: 0 15px;        
+}
+
+.input-busca, .botao-busca {
+    height: 45px;          
+    border-radius: 8px;     
+    font-size: 16px;        
+}
+
+.input-busca {
+    border: 1px solid #ccc;
+    padding: 0 15px;
+    width: 100%;            
+}
+
+.botao-busca {
+    background-color: #0d6efd; 
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;           /
+}
+
+@media (min-width: 600px) {
+    .container-busca {
+        flex-direction: row;
+    }
+    
+    .botao-busca {
+        width: auto;         
+        padding: 0 30px;     
+    }
 }

@@ -131,7 +131,7 @@ function mostrar_produtos(produtos) {
       div_produtos_mostrar.innerHTML += `
       <div class="col-12 col-md-6 col-lg-4 col-xl-3 d-flex justify-content-center p-2">
         <div class="card h-100 w-100 shadow-sm"> 
-            <img src="{{ url_for('static', filename='img/${produto.img}') }}" class="card-img-top p-3" alt="${produto.name}" style="height: 200px; object-fit: contain;">
+            <img src="/static/img/${produto.img}" class="card-img-top p-3" alt="${produto.name}" style="height: 200px; object-fit: contain;">
             
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title h6 fw-bold" style="min-height: 2.5rem;">${produto.name}</h5>

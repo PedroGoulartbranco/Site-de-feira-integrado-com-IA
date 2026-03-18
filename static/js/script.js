@@ -16,7 +16,7 @@ botao_pesquisar.addEventListener("click", function (event) {
   usuario_digitou = pesquisa.value;
   console.log(usuario_digitou);
 
-  if (usuario_digitou != "") {
+  if (usuario_digitou.trim() != "") {
     div_mostrar_atualizando_produtos.style.display = "flex"
     div_de_produtos_tela.innerHTML = ""
     fetch("http://127.0.0.1:5000/pesquisar", {

@@ -136,6 +136,7 @@ function ver_carrinho(atualizar = false) {
             Quantidade: ${produto.quantidade}<button type="button" class="botao_quantidade" onclick="diminuir_quantida_no_carrinho('${produto.nome}')">-</button><br>
             Preço Unitário: ${produto.preco}<br>
             Preço Total: R$${preco_total_produto}</p>
+            <hr>
             `
             texto_para_zap += `%0ANome: ${produto.nome}%0AQuantidade: ${produto.quantidade}%0APreço Unitário: ${produto.preco}%0APreço Total: R$${preco_total_produto}`
         })

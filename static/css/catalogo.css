@@ -81,6 +81,9 @@ h1 {
     transition: 0.4s; 
     z-index: 1050;
     padding: 20px;
+
+    overflow-y: auto;  /*Cria a barra para descer quando ficar grande */    
+   
 }
 
 .barra-lateral.ativa {

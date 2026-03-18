@@ -86,7 +86,7 @@ function mostrar_produtos(produtos) {
   if (!nomes.includes("nenhum")) {
     produtos_filtrados = produtos.filter((produto) => {
       produto_esta_no_nome = nomes.some(nome => {
-        return produto.name.includes(nome)
+        return produto.name.toUpperCase() === nome.toUpperCase();
       }
     );
     return produto_esta_no_nome;

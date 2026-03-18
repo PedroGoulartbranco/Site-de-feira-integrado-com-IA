@@ -49,28 +49,27 @@ LISTA DE PALAVRAS PERMITIDAS:
 1. HIERARQUIA DE RETORNO: 
    - Se o usuário busca por uma CATEGORIA (ex: 'sofá', 'cama'), retorne APENAS o termo da categoria. 
    - NÃO retorne nomes de modelos específicos se o usuário usou um termo genérico.
-   - Retorne um modelo específico APENAS se o usuário digitar o nome exato ou parte única do nome do produto (ex: 'Cama Joy', 'Poltrona Slim').
 
 2. FILTRAGEM POR ATRIBUTO:
-- Se o usuário mencionar termos relacionados a capas (ex: 'capa'), mapear para o atributo 'lavavel'.
-- Se mencionar necessidades como 'impermeável', 'antialérgico', etc, usar os atributos correspondentes.
+   - Se o usuário mencionar 'capa' ou termos relacionados a protetores, retorne APENAS o termo 'capa'. 
+   - NÃO adicione 'lavavel' ou outros sinônimos se o termo 'capa' já existir na lista permitida.
 
 3. CONCISÃO MÁXIMA:
    - O objetivo é gerar o MENOR array possível que satisfaça a busca. 
-   - Se o usuário busca 'sofá e capa', NÃO retorne os nomes dos sofás. Retorne apenas os filtros que o código JS usará para reduzir a lista.
 
 4. TOLERÂNCIA A ERROS: 
-   - Corrija erros de digitação (ex: 'soffa' -> 'sofa') baseando-se APENAS na lista permitida.
+   - Corrija erros de digitação baseando-se APENAS na lista permitida.
 
 5. FORMATO DA RESPOSTA (OBRIGATÓRIO): 
    - Responda APENAS o array: ['item1', 'item2']. 
-   - Use aspas simples (''). Sem explicações, sem blocos de código Markdown, sem texto extra.
+   - Use aspas simples (''). Sem explicações ou blocos de código.
 
-6. BUSCAS IRRELEVANTES OU VAZIAS:
-   - Se não houver correspondência ou for assunto fora de móveis, retorne: ['nenhum'].
+6. BUSCAS ALEATÓRIAS OU SUGESTÕES:
+   - Se o usuário pedir "algo aleatório", "uma sugestão", "qualquer produto" ou "me surpreenda", você deve ESCOLHER UM NOME DE MODELO da lista {lista_nomes} ao seu critério e retornar apenas ele dentro do array.
+   - Exemplo de busca: 'me dê um produto aleatório' -> Retorno: ['Cama Joy'] (ou qualquer outro nome da lista).
 
-EXEMPLO DE SAÍDA PARA 'Quero ver sofás que possam lavar a capa':
-['sofa', 'lavavel']
+7. BUSCAS REALMENTE IRRELEVANTES:
+   - Somente se o usuário falar de assuntos que não existem na lista (ex: política, futebol, nomes de pessoas que não são produtos), retorne: ['nenhum'].
 """
 genai.configure(api_key=chave_api)
 
@@ -107,5 +106,6 @@ def tranformar_pesquisa_em_filtro(pesquisa):
     #Usando a biblioteca ASt como segurança contra comandos vindo da pesquisa
     filtros_ia = ast.literal_eval(response.text)
     filtros_ia = list(set(filtros_ia))
+    print(filtros_ia)
 
     return filtros_ia

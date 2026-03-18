@@ -19,7 +19,7 @@ botao_pesquisar.addEventListener("click", function (event) {
   if (usuario_digitou.trim() != "") {
     div_mostrar_atualizando_produtos.style.display = "flex"
     div_de_produtos_tela.innerHTML = ""
-    fetch("http://127.0.0.1:5000/pesquisar", {
+    fetch("/pesquisar", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -65,7 +65,7 @@ function atualizar_filtro(filtros, atributos, nomes) {
 
 async function pegar_produtos() {
 
-  await fetch("http://127.0.0.1:5000/pegar_produtos")
+  await fetch("/pegar_produtos")
     .then((response) => response.json())
 
     .then((data) => {

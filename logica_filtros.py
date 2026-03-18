@@ -74,18 +74,36 @@ EXEMPLO DE SAÍDA PARA 'Quero ver sofás que possam lavar a capa':
 """
 genai.configure(api_key=chave_api)
 
-model = genai.GenerativeModel(
-    #gemini-2.5-flash
-    #gemini-3-flash-preview
-    model_name='gemini-3-flash-preview',
-    system_instruction=configuracao_ia,
-    generation_config={
-          "temperature": 0.3
-    }
-)
+lista_modelos = ['gemini-3-flash-preview', 'gemini-2.5-flash']
+atual = 0
+nome_modelo = 'gemini-3-flash-preview'
+
+def criar_modelo(indice):
+     model = genai.GenerativeModel(
+        #gemini-2.5-flash
+        #gemini-3-flash-preview
+        model_name=lista_modelos[indice],
+        system_instruction=configuracao_ia,
+        generation_config={
+            "temperature": 0.3
+        }
+    )
+     return model
+
+model = criar_modelo(atual)
 
 def tranformar_pesquisa_em_filtro(pesquisa):
-    response = model.generate_content(pesquisa)
+    atual = 0
+    try:
+        response = model.generate_content(pesquisa)
+    except:
+        if (atual == 0):
+            atual = 1
+        else:
+            atual = 0
+        model = criar_modelo(atual)
+        response = model.generate_content(pesquisa)
+        
     #Usando a biblioteca ASt como segurança contra comandos vindo da pesquisa
     filtros_ia = ast.literal_eval(response.text)
     filtros_ia = list(set(filtros_ia))

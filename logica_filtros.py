@@ -13,7 +13,7 @@ lista_nomes = []
 filtros = [
     # Categorias Principais
     'poltrona',  'sofa', 'cama', 'cama casal', 'cama solteiro', 
-    'travesseiro', 'colchao', 'acessorio',
+    'travesseiro', 'colchao', 'acessorio', 'cama junior'
 ]
 
 atributos = ['impermeavel', 'antialergico', 'montessoriano', 'lavavel', 'infantil', 'seguranca', "sofa"]

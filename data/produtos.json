@@ -58,5 +58,25 @@
     "img": "CAPA-AVULSA-SOFA-DE-BRINCAR-PLICO.png",
     "descricao_IA": "Acessório de reposição e manutenção para o Sofá Plico. Foco em praticidade, higiene e renovação do ambiente. Permite trocar a cor do móvel ou garantir o uso do sofá enquanto a outra capa está lavando. Vibe: prática, organizada, versátil e durável. Possui tecido repelente a líquidos e zíper funcional. Ideal para quem já possui o sofá e busca conveniência. Palavras-chave: capa extra, trocar cor, reposição, fácil de lavar, manutenção, durabilidade, organização.",
     "descricao_Front": "A Capa Avulsa do Sofá de Brincar Plico Bell’Baby foi criada para trazer praticidade para a rotina e manter o seu Plico sempre impecável."
+    },
+    {
+    "id": "007",
+    "name": "CAMA JÚNIOR MONTESSORIANA GOMOS", 
+    "price": "3.363,00", 
+    "filtros": ["cama", "cama junior"], 
+    "atributos": ["montessoriano", "infantil", "seguranca", "lavavel", "impermeavel"],
+    "img": "CAMA-JUNIOR-MONTESSORIANA-GOMOS.png",
+    "descricao_IA": "Cama infantil de transição (berço para cama) em estilo montessoriano. Focada em autonomia e segurança para a primeira infância. Estrutura baixa, totalmente estofada com espuma D35 Soft e sem quinas. Vibe: segura, independente, prática e aconchegante. Tecido Tramado repelente a líquidos (certificado Oeko-Tex) e capa removível/lavável. Palavras-chave: transição berço, infantil, autonomia, macio, fácil de limpar, proteção, sem quinas.",
+    "descricao_Front": "A Cama Montessoriana Júnior Bell’Baby é o elo entre o berço e a cama tradicional — perfeita para acompanhar o crescimento com segurança, conforto e autonomia."
+    },
+    {
+    "id": "008",
+    "name": "POLTRONA JOY INFANTIL", 
+    "price": "2.142,00",
+    "filtros": ["poltrona"],
+    "atributos": ["infantil", "seguranca", "lavavel"],
+    "img": "POLTRONA-JOY-INFANTIL.png",
+    "descricao_IA": "Poltrona infantil macia, ergonômica e leve. Focada em criar um espaço móvel para leitura, descanso e relaxamento. Estrutura segura, sem quinas e com bordas arredondadas, estofada com espuma D35 Soft. Vibe: acolhedora, tranquila, prática e contemporânea. Revestimento em Tecido Tramado lavável e resistente (certificado Oeko-Tex), produzido com materiais atóxicos. Palavras-chave: poltrona de quarto, cantinho da leitura, fácil de mover, design seguro, atóxico, confortável.",
+    "descricao_Front": "A Poltrona Joy Bell’Baby foi criada para ser o cantinho preferido das crianças — um espaço para sentar, ler, descansar ou simplesmente imaginar."
     }
 ]

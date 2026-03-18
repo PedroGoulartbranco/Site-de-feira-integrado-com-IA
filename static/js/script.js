@@ -38,7 +38,9 @@ botao_pesquisar.addEventListener("click", function (event) {
     })
 
     .catch((error) => console.log(error));
-  } 
+  } else {
+    pesquisa.style.placeholder = "Filtro Inteligente"
+  }
 
 });
 

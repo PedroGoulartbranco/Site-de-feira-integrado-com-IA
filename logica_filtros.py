@@ -73,12 +73,18 @@ LISTA DE PALAVRAS PERMITIDAS:
 genai.configure(api_key=chave_api)
 
 
-lista_modelos = ['gemini-2.5-flash', 'gemini-2.5-flash-lite']
+lista_modelos = ['gemini-2.5-flash', 'gemini-3.1-flash-lite-preview']
 atual = 0
-nome_modelo = 'gemini-3.1-flash-lite-preview'
+nome_modelo = lista_modelos[1]
 
-def criar_modelo(indice):
-     model = genai.GenerativeModel(
+def criar_modelo(indice, erro=False):
+   global nome_modelo
+   if erro:
+         if nome_modelo == 'gemini-3.1-flash-lite-preview':
+             nome_modelo = lista_modelos[0]
+         else:
+             nome_modelo = lista_modelos[1]
+   model = genai.GenerativeModel(
         #gemini-2.5-flash
         #gemini-3-flash-preview
         model_name=nome_modelo,
@@ -87,17 +93,22 @@ def criar_modelo(indice):
             "temperature": 0.3
         }
     )
-     return model
+   return model
 
 model = criar_modelo(atual)
 
 def tranformar_pesquisa_em_filtro(pesquisa):
-    response = model.generate_content(pesquisa)
+   global model
+   try:
+      response = model.generate_content(pesquisa)
+   except:
+      model = criar_modelo(atual, erro=True)
+      response = model.generate_content(pesquisa)
         
-    #Usando a biblioteca ASt como segurança contra comandos vindo da pesquisa
-    filtros_ia = ast.literal_eval(response.text)
-    print("IA respondeu com sucesso!")
-    filtros_ia = list(set(filtros_ia))
-    print(filtros_ia)
+   #Usando a biblioteca ASt como segurança contra comandos vindo da pesquisa
+   filtros_ia = ast.literal_eval(response.text)
+   print("IA respondeu com sucesso!")
+   filtros_ia = list(set(filtros_ia))
+   print(filtros_ia)
 
-    return filtros_ia
+   return filtros_ia

@@ -6,7 +6,8 @@ import ast
 
 load_dotenv()
 
-chave_api = os.getenv("CHAVE_API")
+#chave_api = os.getenv("CHAVE_API")
+chave_api = os.environ.get("GOOGLE_API_KEY")
 
 lista_nomes = []
 

@@ -77,7 +77,7 @@ genai.configure(api_key=chave_api)
 
 lista_modelos = ['gemini-2.0-flash', 'gemini-2.5-flash-lite']
 atual = 0
-nome_modelo = 'gemini-2.0-flash'
+nome_modelo = 'gemini-2.5-flash'
 
 def criar_modelo(indice):
      model = genai.GenerativeModel(

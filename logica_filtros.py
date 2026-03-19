@@ -83,7 +83,7 @@ def criar_modelo(indice):
      model = genai.GenerativeModel(
         #gemini-2.5-flash
         #gemini-3-flash-preview
-        model_name=lista_modelos[indice],
+        model_name=nome_modelo,
         system_instruction=configuracao_ia,
         generation_config={
             "temperature": 0.3

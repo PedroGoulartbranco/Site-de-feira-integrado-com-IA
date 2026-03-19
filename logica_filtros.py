@@ -73,9 +73,10 @@ LISTA DE PALAVRAS PERMITIDAS:
 """
 genai.configure(api_key=chave_api)
 
-lista_modelos = ['gemini-3-flash-preview', 'gemini-2.5-flash']
+
+lista_modelos = ['gemini-2.0-flash', 'gemini-2.5-flash-lite']
 atual = 0
-nome_modelo = 'gemini-3-flash-preview'
+nome_modelo = 'gemini-2.0-flash'
 
 def criar_modelo(indice):
      model = genai.GenerativeModel(
@@ -92,7 +93,6 @@ def criar_modelo(indice):
 model = criar_modelo(atual)
 
 def tranformar_pesquisa_em_filtro(pesquisa):
-    atual = 0
     try:
         response = model.generate_content(pesquisa)
     except:

@@ -73,7 +73,7 @@ h1 {
     position: fixed;
     top: 0;
     right: -400px; /* Fora da tela*/
-    width: 100%;  /* No celular, ela ocupa a tela toda */
+    width: 85%;  /* No celular, ela ocupa a 85 */
     max-width: 400px; /* Mas no PC, ela trava em 400px para não ficar feia */
     height: 100vh;
     background: white;

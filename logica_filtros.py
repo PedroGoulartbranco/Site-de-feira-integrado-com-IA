@@ -93,15 +93,7 @@ def criar_modelo(indice):
 model = criar_modelo(atual)
 
 def tranformar_pesquisa_em_filtro(pesquisa):
-    try:
-        response = model.generate_content(pesquisa)
-    except:
-        if (atual == 0):
-            atual = 1
-        else:
-            atual = 0
-        model = criar_modelo(atual)
-        response = model.generate_content(pesquisa)
+    response = model.generate_content(pesquisa)
         
     #Usando a biblioteca ASt como segurança contra comandos vindo da pesquisa
     filtros_ia = ast.literal_eval(response.text)

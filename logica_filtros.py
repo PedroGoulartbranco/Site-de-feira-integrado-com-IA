@@ -97,6 +97,7 @@ def tranformar_pesquisa_em_filtro(pesquisa):
         
     #Usando a biblioteca ASt como segurança contra comandos vindo da pesquisa
     filtros_ia = ast.literal_eval(response.text)
+    print("IA respondeu com sucesso!")
     filtros_ia = list(set(filtros_ia))
     print(filtros_ia)
 

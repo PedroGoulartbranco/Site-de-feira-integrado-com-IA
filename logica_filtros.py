@@ -73,9 +73,9 @@ LISTA DE PALAVRAS PERMITIDAS:
 genai.configure(api_key=chave_api)
 
 
-lista_modelos = ['gemini-2.0-flash', 'gemini-2.5-flash-lite']
+lista_modelos = ['gemini-2.5-flash', 'gemini-2.5-flash-lite']
 atual = 0
-nome_modelo = 'gemini-2.5-flash'
+nome_modelo = 'gemini-3.1-flash-lite-preview'
 
 def criar_modelo(indice):
      model = genai.GenerativeModel(

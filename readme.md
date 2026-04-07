@@ -4,7 +4,7 @@ This project is an e-commerce solution that uses Artificial Intelligence to tran
 
 ## 📸 Demo
 <div align="center">
-  <img src="static/img/video.gif" width="450px" alt="Desktop Version">
+  <img src="static/img/video.gif" width="700px" alt="Desktop Version">
   <p><i>Adaptive interface focusing on mobile usability and contextual search.</i></p>
 </div>
 

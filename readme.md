@@ -4,8 +4,7 @@ This project is an e-commerce solution that uses Artificial Intelligence to tran
 
 ## 📸 Demo
 <div align="center">
-  <img src="./screenshots/desktop-view.png" width="450px" alt="Desktop Version">
-  <img src="./screenshots/mobile-view.png" width="220px" alt="Mobile Version">
+  <img src="static/img/video.gif" width="450px" alt="Desktop Version">
   <p><i>Adaptive interface focusing on mobile usability and contextual search.</i></p>
 </div>
 
@@ -29,7 +28,7 @@ This project is an e-commerce solution that uses Artificial Intelligence to tran
 This project was developed over **5 days** of intense work. During the process, my main points of learning and difficulty were:
 
 1. **Responsiveness:** I had a lot of difficulty making the site fully responsive, ensuring that the filter sidebar worked well on small screens with an escape area (gap) for the user.
-2. **Deploy on Render:** Deploying the application and configuring environment variables and the server stably was an important technical challenge.
+2. **Deploy:** Vercel 
 3. **Prompt Engineering:** Refining the AI instructions so that it would not "hallucinate" and would stay strictly within the store's business rules.
 
 Although Frontend is not my strongest suit, this project allowed me to evolve significantly in this area, in addition to consolidating knowledge in infrastructure and AI.
